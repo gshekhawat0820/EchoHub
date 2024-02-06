@@ -12,7 +12,7 @@ import SwiftData
 struct EchoHubApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Assistant.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct EchoHubApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AssistantSelectView()
         }
         .modelContainer(sharedModelContainer)
     }
