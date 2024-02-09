@@ -36,7 +36,7 @@ struct GoogleView: View {
                 )
                 Button(
                     action: {
-                        self.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum;
+                        self.sourceType = UIImagePickerController.SourceType.photoLibrary;
                         self.showPicker.toggle();
                     },
                     label: {
