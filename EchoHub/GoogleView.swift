@@ -16,7 +16,10 @@ struct GoogleView: View {
         VStack {
 
             image?.resizable()
+                .aspectRatio(1.0, contentMode: .fill)
                 .scaledToFit()
+                .frame(width: 75, height: 75, alignment: .center)
+                .clipShape(.buttonBorder)
 
             Menu("Set image") {
                 Button(
@@ -33,7 +36,7 @@ struct GoogleView: View {
                 )
                 Button(
                     action: {
-                        self.sourceType = UIImagePickerController.SourceType.photoLibrary;
+                        self.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum;
                         self.showPicker.toggle();
                     },
                     label: {
@@ -46,7 +49,7 @@ struct GoogleView: View {
             }
             .environment(\.menuOrder, .fixed)
         }
-        .sheet(isPresented: self.$showPicker, content: {
+        .fullScreenCover(isPresented: self.$showPicker, content: {
             ImagePickerView(
                 showPicker: self.$showPicker,
                 image: self.$image,
