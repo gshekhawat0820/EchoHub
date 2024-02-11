@@ -15,6 +15,9 @@
 		26D7412B2B71798200F93014 /* Assistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7412A2B71798200F93014 /* Assistant.swift */; };
 		26D7412D2B71798400F93014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412C2B71798400F93014 /* Assets.xcassets */; };
 		26D741302B71798400F93014 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412F2B71798400F93014 /* Preview Assets.xcassets */; };
+		B26B8F492B744BC4000843B9 /* GoogleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F482B744BC4000843B9 /* GoogleView.swift */; };
+		B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */; };
+		B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4C2B745783000843B9 /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		26D7412A2B71798200F93014 /* Assistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assistant.swift; sourceTree = "<group>"; };
 		26D7412C2B71798400F93014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26D7412F2B71798400F93014 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B26B8F482B744BC4000843B9 /* GoogleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleView.swift; sourceTree = "<group>"; };
+		B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B26B8F4C2B745783000843B9 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,9 @@
 				26D741262B71798200F93014 /* EchoHubApp.swift */,
 				26D741282B71798200F93014 /* AssistantSelectView.swift */,
 				260B06122B74588700BD06D6 /* AlexaView.swift */,
+				B26B8F482B744BC4000843B9 /* GoogleView.swift */,
+				B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */,
+				B26B8F4C2B745783000843B9 /* ImagePickerView.swift */,
 				260B06102B728EA300BD06D6 /* LaunchScreen.storyboard */,
 				260B06142B745AD100BD06D6 /* NavigationBarView.swift */,
 				26D7412A2B71798200F93014 /* Assistant.swift */,
@@ -155,8 +164,11 @@
 				260B06132B74588700BD06D6 /* AlexaView.swift in Sources */,
 				26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */,
 				26D7412B2B71798200F93014 /* Assistant.swift in Sources */,
+				B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */,
 				26D741272B71798200F93014 /* EchoHubApp.swift in Sources */,
 				260B06152B745AD100BD06D6 /* NavigationBarView.swift in Sources */,
+				B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */,
+				B26B8F492B744BC4000843B9 /* GoogleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +302,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EchoHub/Preview Content\"";
+				DEVELOPMENT_TEAM = BF6VFYGTA3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EchoHub/Info.plist;
@@ -320,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EchoHub/Preview Content\"";
+				DEVELOPMENT_TEAM = BF6VFYGTA3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EchoHub/Info.plist;

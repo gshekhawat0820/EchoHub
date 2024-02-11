@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 struct AssistantSelectView: View {
     @Environment(\.modelContext) private var modelContext
@@ -74,12 +75,6 @@ struct AssistantSelectView: View {
 // Communication: text, call, broadcast through house, Urgent response
 // Routines: morning routine, bedtime routine
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
-
-struct GoogleView: View {
-    var body: some View {
-        Text("Hey Google")
-    }
-}
 
 #Preview {
     AssistantSelectView()
