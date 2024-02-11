@@ -9,6 +9,8 @@ import SwiftUI
 import AVFoundation
 
 struct ActionsInterfaceView: View {
+    @State private var indexSetToDelete: IndexSet?
+    
     var body: some View {
         // For each action in a category, call a function to convert
         // the pressed action into speech.
@@ -28,6 +30,7 @@ struct ActionsInterfaceView: View {
             .onDelete(perform: deleteItem)
         }
             .navigationBarItems(trailing: EditButton())
+            .alert(item: $indexSetToDelete) {indexSet in Alert(title: Text("Are you sure you want to delete this action?"), primaryButton: .destructive(Text("Delete"), action: {actions.delete(at: indexSet)}, secondaryButton: .cancel()))}
  */
     }
     
@@ -45,7 +48,7 @@ struct ActionsInterfaceView: View {
     }
  
     func deleteItem(at offsets: IndexSet){
-        characters.remove(atOffsets: offsets)
+        actions.remove(atOffsets: offsets)
     }
 */
 }
