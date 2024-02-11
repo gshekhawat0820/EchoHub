@@ -30,7 +30,7 @@ struct ActionsInterfaceView: View {
             .onDelete(perform: deleteItem)
         }
             .navigationBarItems(trailing: EditButton())
-            .alert(item: $indexSetToDelete) {indexSet in Alert(title: Text("Are you sure you want to delete this action?"), primaryButton: .destructive(Text("Delete"), action: {actions.delete(at: indexSet)}, secondaryButton: .cancel()))}
+            .alert(item: $indexSetToDelete) {indexSet in Alert(title: Text("Are you sure you want to delete this action?"), primaryButton: .destructive(Text("Delete"), action: {actions.delete(at: offsets)}, secondaryButton: .cancel()))}
  */
     }
     
@@ -39,7 +39,7 @@ struct ActionsInterfaceView: View {
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.3
 
-        let synthesizer = AVSpeechSynthesizer()
+        @State var synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
     
