@@ -13,6 +13,7 @@ struct EchoHubApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Assistant.self,
+            Action.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

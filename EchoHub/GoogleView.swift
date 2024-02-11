@@ -8,17 +8,51 @@
 import SwiftUI
 
 struct GoogleView: View {
+    @Environment(\.modelContext) private var modelContext;
+
     @State private var showPicker = false;
-    @State private var image: Image? = nil;
     @State private var sourceType = UIImagePickerController.SourceType.camera;
+    @State private var image: UIImage? = nil;
+    
+    @State private var prompt = "";
+    @State private var category: String = "Household";
+    @State private var device: String = "Amazon Alexa";
+    @State private var hidden: Bool = false;
+    @State private var favorite: Bool = false;
+
+    let devices = ["Amazon Alexa", "Google Home"];
+    let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
+    
+    func addAction() {
+        guard let image = self.image else {
+            return;
+        }
+
+        let action = Action(
+            prompt: self.prompt,
+            category: self.category,
+            device: self.device,
+            hidden: self.hidden,
+            favorite: self.favorite,
+            image: image
+        );
+
+        modelContext.insert(action)
+    }
 
     var body: some View {
-        VStack {
+        Form {
 
-            image?.resizable()
-                .scaledToFit()
-
-            Menu("Set image") {
+            TextField("Prompt", text: $prompt)
+            
+            if (image == nil) {
+                EmptyView()
+            } else {
+                Image(uiImage: image!).resizable()
+                    .scaledToFit()
+            }
+            
+            Menu("Set icon") {
                 Button(
                     action: {
                         self.sourceType = UIImagePickerController.SourceType.camera;
@@ -45,8 +79,35 @@ struct GoogleView: View {
                 )
             }
             .environment(\.menuOrder, .fixed)
+            
+            Picker("Category", selection: $category) {
+                ForEach(categories, id: \.self) {
+                    Text($0)
+                }
+            }
+
+            Picker("Device", selection: $device) {
+                ForEach(devices, id: \.self) {
+                    Text($0)
+                }
+            }
+
+            Toggle(isOn: $hidden) {
+                Text("Hide")
+            }
+
+            Toggle(isOn: $favorite) {
+                Text("Favorite")
+            }
+            
+            Section {
+                Button(action: addAction) {
+                    Text("Submit")
+                }
+            }
         }
-        .sheet(isPresented: self.$showPicker, content: {
+        .navigationTitle("Add Action")
+        .fullScreenCover(isPresented: self.$showPicker, content: {
             ImagePickerView(
                 showPicker: self.$showPicker,
                 image: self.$image,
