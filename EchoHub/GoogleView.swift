@@ -48,8 +48,12 @@ struct GoogleView: View {
             if (image == nil) {
                 EmptyView()
             } else {
-                Image(uiImage: image!).resizable()
+                Image(uiImage: image!)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fill)
                     .scaledToFit()
+                    .frame(width: 75, height: 75, alignment: .center)
+                    .clipShape(.buttonBorder)
             }
             
             Menu("Set icon") {
