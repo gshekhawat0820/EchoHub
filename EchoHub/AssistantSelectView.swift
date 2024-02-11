@@ -70,7 +70,6 @@ struct AssistantSelectView: View {
 //    }
 }
 
-// Household:Thermostat, Lighting, Lock/Unlock Doors
 // Entertainment: Turn on/off TV, Watch something on Prime Video, Music/podcast/radio/audiobooks, Play games, News
 // Communication: text, call, broadcast through house, Urgent response
 // Routines: morning routine, bedtime routine
