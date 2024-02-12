@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryView: View {
     
     var title: String
+    var actions: [Action]
     
     var body: some View {
         HStack {
@@ -22,11 +23,17 @@ struct CategoryView: View {
         .padding(.horizontal)
         .padding(.top, 15)
         .padding(.bottom, 10)
+        LazyVGrid(columns: gridLayout, spacing: 15, content: {
+            ForEach(actions) { action in
+                ActionIconView(action: action)
+            }
+        })
+        .padding(15)
     }
 }
 
 #Preview {
-    CategoryView(title: "Household")
+    CategoryView(title: "Household", actions: [])
         .previewLayout(.sizeThatFits)
         
 }

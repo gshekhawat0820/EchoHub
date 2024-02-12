@@ -10,8 +10,8 @@ import SwiftUI
 
 // DATA
 let speechObject: ActionToSpeech = ActionToSpeech()
-let householdIcons: [HouseholdIcon] = Bundle.main.decode("Data/household.json")
-let entertainmentIcons: [EntertainmentIcon] = Bundle.main.decode("Data/entertainment.json")
+let householdIcons: [ActionJson] = Bundle.main.decode("Data/household.json")
+let entertainmentIcons: [ActionJson] = Bundle.main.decode("Data/entertainment.json")
 
 // LAYOUT
 let columnSpacing: CGFloat = 10

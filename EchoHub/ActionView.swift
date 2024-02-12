@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct GoogleView: View {
+struct ActionView: View {
     @Environment(\.modelContext) private var modelContext;
     
     let action: Action?
