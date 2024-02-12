@@ -9,16 +9,20 @@ import SwiftUI
 
 struct HouseholdIconView: View {
     
-    let householdIcon: Action;
-    
+    let householdIcon: Action
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
             ZStack {
-                Image(uiImage: UIImage(data: householdIcon.imageData!)!)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(10)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                Button(action: {
+                    speechObject.ActionToSpeech(action_command: householdIcon.prompt)
+                }, label: {
+                     Image(uiImage: UIImage(data: householdIcon.imageData!)!)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(10)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                }
+                )
             }
             NavigationLink(householdIcon.name) {
                 GoogleView(action: householdIcon)
@@ -33,4 +37,4 @@ struct HouseholdIconView: View {
 //    HouseholdIconView(householdIcon: householdIcons[0])
 //        .previewLayout(.fixed(width: 200, height: 300))
 //        .padding()
-//}A
+//}
