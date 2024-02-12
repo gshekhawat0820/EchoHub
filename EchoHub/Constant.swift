@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 // DATA
+let speechObject: ActionToSpeech = ActionToSpeech()
 let householdIcons: [HouseholdIcon] = Bundle.main.decode("Data/household.json")
 let entertainmentIcons: [EntertainmentIcon] = Bundle.main.decode("Data/entertainment.json")
 

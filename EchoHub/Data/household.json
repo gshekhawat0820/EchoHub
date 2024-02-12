@@ -33,7 +33,7 @@
         "id" : 6,
         "name" : "Unlock front door",
         "image": "door_unlock",
-        "description" : "Alexa, unlcok the front door"
+        "description" : "Alexa, unlock the front door"
     }
     
 ]
