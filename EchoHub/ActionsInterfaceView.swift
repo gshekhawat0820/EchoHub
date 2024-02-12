@@ -9,7 +9,11 @@ import SwiftUI
 import AVFoundation
 
 struct ActionsInterfaceView: View {
-    @State private var indexSetToDelete: IndexSet?
+    init() {
+        AVSpeechSynthesisVoice.speechVoices()
+    }
+    @State var synthesizer = AVSpeechSynthesizer()
+    // @State private var indexSetToDelete: IndexSet?
     
     var body: some View {
         // For each action in a category, call a function to convert
@@ -38,8 +42,6 @@ struct ActionsInterfaceView: View {
         let utterance = AVSpeechUtterance(string: "Hey Google,  \(action_command)")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.3
-
-        @State var synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
     
