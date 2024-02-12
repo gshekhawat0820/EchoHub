@@ -11,6 +11,7 @@ import SwiftUI
 
 @Model
 class Action {
+    var name: String;
     var prompt: String;
     var category: String;
     var device: String;
@@ -20,7 +21,8 @@ class Action {
     @Attribute(.externalStorage)
     var imageData: Data?;
     
-    init(prompt: String, category: String, device: String, hidden: Bool, favorite: Bool, image: UIImage) {
+    init(name: String, prompt: String, category: String, device: String, hidden: Bool, favorite: Bool, image: UIImage) {
+        self.name = name;
         self.prompt = prompt;
         self.category = category;
         self.device = device;

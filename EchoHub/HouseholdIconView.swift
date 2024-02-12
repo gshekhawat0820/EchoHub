@@ -9,26 +9,28 @@ import SwiftUI
 
 struct HouseholdIconView: View {
     
-    let householdIcon: HouseholdIcon
+    let householdIcon: Action;
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
             ZStack {
-                Image(householdIcon.image)
+                Image(uiImage: UIImage(data: householdIcon.imageData!)!)
                     .resizable()
                     .scaledToFit()
                     .padding(10)
                     .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
             }
-            Text(householdIcon.name)
+            NavigationLink(householdIcon.name) {
+                GoogleView(action: householdIcon)
+            }
                 .font(.title3)
                 .fontWeight(.semibold)
         })
     }
 }
 
-#Preview {
-    HouseholdIconView(householdIcon: householdIcons[0])
-        .previewLayout(.fixed(width: 200, height: 300))
-        .padding()
-}
+//#Preview {
+//    HouseholdIconView(householdIcon: householdIcons[0])
+//        .previewLayout(.fixed(width: 200, height: 300))
+//        .padding()
+//}A

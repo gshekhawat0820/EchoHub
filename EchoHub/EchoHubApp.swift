@@ -9,20 +9,8 @@ import SwiftUI
 import SwiftData
 
 @main
+@MainActor
 struct EchoHubApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Assistant.self,
-            Action.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
 
     var body: some Scene {
         WindowGroup {
@@ -31,3 +19,31 @@ struct EchoHubApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
+@MainActor
+let sharedModelContainer: ModelContainer = {
+    do {
+        let container = try ModelContainer(for: Action.self);
+        var actionFetchDescriptor = FetchDescriptor<Action>();
+        actionFetchDescriptor.fetchLimit = 1;
+        
+        guard try container.mainContext.fetch(actionFetchDescriptor).count == 0 else { return container }
+        
+        for icon in householdIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Household",
+                device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        return container;
+    } catch {
+        fatalError("Could not create ModelContainer: \(error)")
+    }
+}()

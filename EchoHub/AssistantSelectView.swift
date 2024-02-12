@@ -10,8 +10,8 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var assistants: [Assistant]
+//    @Environment(\.modelContext) private var modelContext
+//    @Query private var assistants: [Assistant]
 
     var body: some View {
         NavigationStack {
@@ -22,7 +22,7 @@ struct AssistantSelectView: View {
                     Text("Amazon Alexa")
                 });
                 NavigationLink(destination: {
-                    GoogleView()
+                    GoogleView(action: nil)
                 }, label: {
                     Text("Google Home")
                 });
