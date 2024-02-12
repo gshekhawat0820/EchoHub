@@ -41,7 +41,7 @@ struct ActionsInterfaceView: View {
     func ActionToSpeech(action_command: String) {
         let utterance = AVSpeechUtterance(string: "Hey Google,  \(action_command)")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.3
+        utterance.rate = 0.5
         synthesizer.speak(utterance)
     }
     
