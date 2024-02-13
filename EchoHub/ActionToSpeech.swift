@@ -13,7 +13,7 @@ class ActionToSpeech {
         AVSpeechSynthesisVoice.speechVoices()
     }
     @State var synthesizer = AVSpeechSynthesizer()
-    
+
     func ActionToSpeech(action_command: String) {
         let utterance = AVSpeechUtterance(string: "\(action_command)")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")

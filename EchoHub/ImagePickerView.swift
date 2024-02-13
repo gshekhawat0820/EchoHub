@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ImagePickerView: View {
     @Binding var showPicker: Bool;
-    @Binding var image: Image?;
+    @Binding var image: UIImage?;
     @Binding var sourceType: UIImagePickerController.SourceType;
     
     var body: some View {
-        ImagePicker(
-            shown: self.$showPicker,
-            image: self.$image,
-            sourceType: self.$sourceType
-        );
+        ZStack{
+            ImagePicker(
+                shown: self.$showPicker,
+                image: self.$image,
+                sourceType: self.$sourceType
+            );
+        }.ignoresSafeArea()
     }
 }
 
@@ -25,7 +27,7 @@ struct ImagePickerView: View {
     ImagePickerView(
         showPicker: .constant(false),
         image: .constant(
-            Image("")
+            UIImage()
         ),
         sourceType: .constant(
             UIImagePickerController.SourceType.camera

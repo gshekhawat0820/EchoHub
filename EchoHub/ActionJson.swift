@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HouseholdIcon: Codable, Identifiable {
+struct ActionJson: Codable, Identifiable {
     let id: Int
     let name: String
     let image: String

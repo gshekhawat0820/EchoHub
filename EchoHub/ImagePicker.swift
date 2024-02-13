@@ -14,16 +14,16 @@ import SwiftUI
 class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @Binding var shown: Bool;
-    @Binding var image: Image?;
+    @Binding var image: UIImage?;
     
-    init(shown: Binding<Bool>, image: Binding<Image?>) {
+    init(shown: Binding<Bool>, image: Binding<UIImage?>) {
         _shown = shown;
         _image = image;
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let uiImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            image = Image(uiImage: uiImage);
+            image = uiImage;
             shown = false;
         }
     }
@@ -35,7 +35,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var shown: Bool;
-    @Binding var image: Image?;
+    @Binding var image: UIImage?;
     @Binding var sourceType: UIImagePickerController.SourceType;
 
     func makeCoordinator() -> ImagePickerCoordinator {
