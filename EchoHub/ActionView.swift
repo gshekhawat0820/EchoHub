@@ -23,6 +23,8 @@ struct ActionView: View {
     @State private var device: String = "Amazon Alexa";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
+    
+    @State private var isAlertShown: Bool = false;
 
     let devices = ["Amazon Alexa", "Google Home"];
     let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
@@ -76,7 +78,11 @@ struct ActionView: View {
             modelContext.insert(action)
         }
     }
-
+    
+    func deleteAction() {
+        return;
+    }
+    
     var body: some View {
         Form {
             Section(header: Text("Name")) {
@@ -150,6 +156,20 @@ struct ActionView: View {
                 Button(action: addAction) {
                     Text("Submit")
                 }
+            }
+            
+            Section {
+                Button(action: {isAlertShown.toggle()}) {
+                    Text("Delete")
+                        .foregroundColor(.red)
+                }
+                .alert(isPresented: $isAlertShown, content: {
+                    Alert(title: Text("Are you sure you want to delete this action?"),
+                          primaryButton: .destructive(Text("Delete"),
+                          action: {
+                        // Delete action from list
+                    }), secondaryButton: .cancel())
+                })
             }
         }
         .navigationTitle(action == nil ? "Add Action" : "Edit Action")
