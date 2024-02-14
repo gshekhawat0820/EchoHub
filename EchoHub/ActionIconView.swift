@@ -20,9 +20,12 @@ struct ActionIconView: View {
                     label: {
                         Image(uiImage: UIImage(data: action.imageData!)!)
                             .resizable()
-                            .scaledToFit()
-                            .padding(10)
-                            .border(Color.black)
+                            .frame(width: 90, height: 90)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                              .overlay {
+                                RoundedRectangle(cornerRadius: 20)
+                                  .stroke(.black, lineWidth: 3)
+                            }
                     }
                 )
             }

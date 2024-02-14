@@ -12,10 +12,13 @@ import SwiftUI
 let speechObject: ActionToSpeech = ActionToSpeech()
 let householdIcons: [ActionJson] = Bundle.main.decode("Data/household.json")
 let entertainmentIcons: [ActionJson] = Bundle.main.decode("Data/entertainment.json")
+let communicationIcons: [ActionJson] = Bundle.main.decode("Data/communication.json")
+let infoChoresIcons: [ActionJson] = Bundle.main.decode("Data/info_chores.json")
+let routinesIcons: [ActionJson] = Bundle.main.decode("Data/routines.json")
 
 // LAYOUT
 let columnSpacing: CGFloat = 10
 let rowSpacing: CGFloat = 10
 var gridLayout: [GridItem] {
-    return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 3)
+    return Array(repeating: GridItem(.flexible(), spacing: rowSpacing, alignment: .top), count: 3)
 }

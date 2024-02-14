@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AlexaView: View {
+    @Environment(\.modelContext) var context
     @Query let actions: [Action];
 
     var body: some View {
@@ -40,11 +41,24 @@ struct AlexaView: View {
                             title: "Information & Chores 📋",
                             actions: actions.filter({ $0.category == "Information & Chores" })
                         )
+                        Button(action: {
+                            deleteAllData()
+                        }, label: {
+                            Text("Reset SwiftData")
+                        })
                     })
                 })
             }
             .navigationBarBackButtonHidden(true)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+        }
+    }
+    
+    func deleteAllData() {
+        do {
+            try context.delete(model: Action.self)
+        } catch {
+            print("Could not delete Actions")
         }
     }
 }

@@ -1,0 +1,26 @@
+[
+    {
+        "id" : 11,
+        "name" : "Check weather",
+        "image": "questionmark",
+        "description" : "Alexa, what's the weather like today?"
+    },
+    {
+        "id" : 12,
+        "name" : "Check calendar",
+        "image": "questionmark",
+        "description" : "Alexa, what's on my calendar today?"
+    },
+    {
+        "id" : 13,
+        "name" : "Add to Grocery List",
+        "image": "questionmark",
+        "description" : "Alexa, add to my grocery list"
+    },
+    {
+        "id" : 14,
+        "name" : "Reorder item",
+        "image": "questionmark",
+        "description" : "Alexa, reorder my last purchased item"
+    }
+]
