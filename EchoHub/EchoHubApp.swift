@@ -42,6 +42,58 @@ let sharedModelContainer: ModelContainer = {
             container.mainContext.insert(action)
         }
         
+        for icon in entertainmentIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Entertainment",
+                device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in communicationIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Communication",
+                device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in infoChoresIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Information & Chores",
+                device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in routinesIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Routines",
+                device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
         return container;
     } catch {
         fatalError("Could not create ModelContainer: \(error)")
