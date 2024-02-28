@@ -10,6 +10,8 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
+    @State private var showingSheet = false;
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 100) {
@@ -18,11 +20,11 @@ struct AssistantSelectView: View {
                 }, label: {
                     Text("Amazon Alexa")
                 });
-                NavigationLink(destination: {
+                Button("Add Action") {
+                    showingSheet.toggle()
+                }.sheet(isPresented: $showingSheet) {
                     ActionView(action: nil)
-                }, label: {
-                    Text("Add Action")
-                });
+                }
             }
             .navigationTitle("Assistant Selection")
         }
