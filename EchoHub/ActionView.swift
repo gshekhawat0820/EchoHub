@@ -80,7 +80,7 @@ struct ActionView: View {
     }
     
     func deleteAction() {
-        return;
+        modelContext.delete(action!)
     }
     
     var body: some View {
@@ -166,9 +166,8 @@ struct ActionView: View {
                 .alert(isPresented: $isAlertShown, content: {
                     Alert(title: Text("Are you sure you want to delete this action?"),
                           primaryButton: .destructive(Text("Delete"),
-                          action: {
-                        // Delete action from list
-                    }), secondaryButton: .cancel())
+                          action: deleteAction
+                          ), secondaryButton: .cancel())
                 })
             }
         }
