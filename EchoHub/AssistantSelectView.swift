@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
-struct AssistantSelectView: View {
+struct AssistantSelectView: View {    
     var body: some View {
         NavigationStack {
             ZStack {
