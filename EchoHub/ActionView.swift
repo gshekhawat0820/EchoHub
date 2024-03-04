@@ -84,11 +84,11 @@ struct ActionView: View {
         NavigationView {
             Form {
                 Section(header: Text("Name")) {
-                    TextField("Name", text: self.$name);
+                    TextField("Name (e.g. 'Turn on lights')", text: self.$name);
                 }
                 
                 Section(header: Text("Prompt")) {
-                    TextField("Prompt", text: self.$prompt, axis: .vertical)
+                    TextField("Prompt (e.g. 'Alexa, turn on the lights')", text: self.$prompt, axis: .vertical)
                 }
                 
                 if (self.image == nil) {
