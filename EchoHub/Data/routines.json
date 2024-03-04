@@ -1,0 +1,15 @@
+[
+    {
+        "id" : 15,
+        "name" : "Morning routine",
+        "image": "questionmark",
+        "description" : "Alexa, start my morning routine"
+    },
+    {
+        "id" : 16,
+        "name" : "Night routine",
+        "image": "questionmark",
+        "description" : "Alexa, start my night time routine"
+    }
+]
+

@@ -16,7 +16,7 @@ class ActionToSpeech {
 
     func ActionToSpeech(action_command: String) {
         let utterance = AVSpeechUtterance(string: "\(action_command)")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU")
         utterance.rate = 0.5
         synthesizer.speak(utterance)
     }
