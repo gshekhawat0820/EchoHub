@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NavigationBarView: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
+    @State private var showingSheet = false;
     var body: some View {
         HStack {
             Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
@@ -25,18 +26,19 @@ struct NavigationBarView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
             Spacer().frame(width: 60)
-            NavigationStack {
-                NavigationLink(destination: {
-                    ActionView(action: nil)
-                }, label: {
-                    Text("+")
-                        .font(.system(size: 40))
-                        .fontWeight(.light)
-                        .foregroundStyle(.white)
-                })
+            Button {
+                showingSheet.toggle();
+            } label: {
+                Text("+")
+                    .font(.system(size: 40))
+                    .fontWeight(.light)
+                    .foregroundStyle(.white)
             }
         }
         .background(primaryColor)
+        .sheet(isPresented: $showingSheet) {
+            ActionView(action: nil)
+        }
     }
 }
 

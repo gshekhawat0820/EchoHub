@@ -83,7 +83,10 @@ struct ActionView: View {
     }
     
     func deleteAction() {
-        modelContext.delete(action!)
+        if let action {
+            modelContext.delete(action);
+            dismiss();
+        }
     }
     
     var body: some View {
@@ -160,19 +163,27 @@ struct ActionView: View {
                     Button(action: addAction) {
                         Text(self.action == nil ? "Submit" : "Save")
                     }.disabled(name.isEmpty || prompt.isEmpty || image == nil)
-                }
-
-                Section {
-                    Button(action: {isAlertShown.toggle()}) {
-                        Text("Delete")
-                            .foregroundColor(.red)
+                    
+                    if self.action == nil {
+                        EmptyView();
+                    } else {
+                        Button(action: {
+                            isAlertShown.toggle()
+                        }) {
+                            Text("Delete")
+                                .foregroundColor(.red)
+                        }
+                        .alert(isPresented: $isAlertShown, content: {
+                            Alert(
+                                title: Text("Are you sure you want to delete this action?"),
+                                primaryButton: .destructive(
+                                    Text("Delete"),
+                                    action: deleteAction
+                                ),
+                                secondaryButton: .cancel()
+                            )
+                        })
                     }
-                    .alert(isPresented: $isAlertShown, content: {
-                        Alert(title: Text("Are you sure you want to delete this action?"),
-                              primaryButton: .destructive(Text("Delete"),
-                              action: deleteAction
-                              ), secondaryButton: .cancel())
-                    })
                 }
             }
             .navigationTitle(self.action == nil ? "Add Action" : "Edit Action")
