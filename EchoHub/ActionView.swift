@@ -80,11 +80,11 @@ struct ActionView: View {
     var body: some View {
         Form {
             Section(header: Text("Name")) {
-                TextField("Name", text: $name);
+                TextField("Name (e.g. 'Turn on lights')", text: $name);
             }
             
             Section(header: Text("Prompt")) {
-                TextField("Prompt", text: $prompt, axis: .vertical)
+                TextField("Prompt (e.g. 'Alexa, turn on the lights')", text: $prompt, axis: .vertical)
             }
 
             if (image == nil) {

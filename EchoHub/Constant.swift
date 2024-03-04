@@ -17,6 +17,7 @@ let infoChoresIcons: [ActionJson] = Bundle.main.decode("Data/info_chores.json")
 let routinesIcons: [ActionJson] = Bundle.main.decode("Data/routines.json")
 
 // LAYOUT
+let primaryColor = Color(red: 0, green: 90/255, blue: 168/255)
 let columnSpacing: CGFloat = 10
 let rowSpacing: CGFloat = 10
 var gridLayout: [GridItem] {
