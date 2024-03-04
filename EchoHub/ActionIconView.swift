@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ActionIconView: View {
+    @State private var showingSheet = false;
     
-    let action: Action
+    let action: Action;
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
             ZStack {
@@ -29,11 +30,13 @@ struct ActionIconView: View {
                     }
                 )
             }
-            NavigationLink(action.name) {
-                ActionView(action: action)
+            Button(action.name) {
+                showingSheet.toggle();
             }
             .font(.title3)
             .fontWeight(.semibold)
-        })
+        }).sheet(isPresented: $showingSheet) {
+            ActionView(action: action)
+        }
     }
 }
