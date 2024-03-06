@@ -4,12 +4,12 @@ Nonverbal individuals have to bridge a gap when communicating. To aid their abil
 
 ## Installation
 
-Make sure you have your iPhone is running on iOS 17.2 or later. To install and run EchoHub on your local device, you must follow these steps:
+Make sure you have your iPhone running on iOS 17.2 or later. To install and run EchoHub on your local device, you must follow these steps:
 
-    1. Plug your iPhone in to your MacOS computer and trust the computer from your phone.
-    2. Enable Developer Mode on your iPhone by navigating to Settings > Privacy & Security > Developer Mode > Turn on Developer Mode. Warning: you should receive a prompt to restart your iPhone after turning this on.
-    3. Build the application from XCode on your computer.
-    4. Now you have to trust the Apple ID running the app as a developer from your iPhone. Navigate to Settings > General > VPN & Device Management > Trust the Apple ID as a developer.
-    5. The app should be installed on your iPhone and you can now run it!
+1. Plug your iPhone in to your MacOS computer and trust the computer from your phone.
+2. Enable Developer Mode on your iPhone by navigating to Settings > Privacy & Security > Developer Mode > Turn on Developer Mode. Warning: you should receive a prompt to restart your iPhone after turning this on.
+3. Build the application from XCode on your computer.
+4. Now you have to trust the Apple ID running the app as a developer from your iPhone. Navigate to Settings > General > VPN & Device Management > Trust the Apple ID as a developer.
+5. The app should be installed on your iPhone and you can now run it!
 
 <!-- TODO: add instructions for installing the application -->
