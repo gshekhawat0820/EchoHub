@@ -35,7 +35,9 @@ struct ActionIconView: View {
             }
             .font(.title3)
             .fontWeight(.semibold)
-        }).sheet(isPresented: $showingSheet) {
+        })
+        .onChange(of: showingSheet) { }
+        .sheet(isPresented: $showingSheet) {
             ActionView(action: action)
         }
     }
