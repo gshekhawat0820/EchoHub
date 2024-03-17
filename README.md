@@ -6,8 +6,10 @@ Nonverbal individuals have to bridge a gap when communicating. To aid their abil
 
 If you don't already have CocoaPods, run `sudo gem install cocoapods` and `pod setup`.
 
-1. Run `pod install`.
-2. Open XCode by clicking on `EchoHub.xcworkspace`.
+1. Run `pod install`
+2. Open XCode by clicking on `EchoHub.xcworkspace`
+3. Select the `EchoHub` workspace in XCode and click on 'Add Files to "EchoHub"'
+4. Add the `awsconfiguration.json` file to the `EchoHub` workspace
 
 ## Installation
 
@@ -18,5 +20,3 @@ Make sure you have your iPhone running on iOS 17.2 or later. To install and run 
 3. Build the application from XCode on your computer.
 4. Now you have to trust the Apple ID running the app as a developer from your iPhone. Navigate to Settings > General > VPN & Device Management > Trust the Apple ID as a developer.
 5. The app should be installed on your iPhone and you can now run it!
-
-<!-- TODO: add instructions for installing the application -->
