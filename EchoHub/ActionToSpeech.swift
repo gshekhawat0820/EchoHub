@@ -19,6 +19,7 @@ class ActionToSpeech {
 
         // TODO: allow user to pick which voice they want...
         input.voiceId = .aditi;
+        input.languageCode = .enUS;
 
         // TODO: if the prompt has already been invoked, retrieve from a cache...
         let builder = AWSPollySynthesizeSpeechURLBuilder.default().getPreSignedURL(input);
