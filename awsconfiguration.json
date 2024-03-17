@@ -1,0 +1,24 @@
+{
+  "Version": "1.0",
+  "IdentityManager": {
+      "Default": {}
+  },
+  "CredentialsProvider": {
+      "CognitoIdentity": {
+          "Default": {
+              "PoolId": "us-east-2:6473306e-64e9-4d2c-bd9e-47e5a760b778",
+              "Region": "us-east-2"
+          }
+      }
+  },
+  "Polly": {
+      "Default": {
+          "Region": "us-east-2"
+      }
+  },
+  "PollySynthesizeSpeechUrlBuilder": {
+      "Default": {
+          "Region": "us-east-2"
+      }
+  }
+}
