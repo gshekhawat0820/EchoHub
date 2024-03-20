@@ -12,7 +12,7 @@ struct ActionIconView: View {
     
     let action: Action;
     var body: some View {
-        VStack(alignment: .leading, spacing: 6, content: {
+        VStack(spacing: 6, content: {
             ZStack {
                 Button(
                     action: {
