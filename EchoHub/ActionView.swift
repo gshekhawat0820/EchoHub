@@ -145,10 +145,10 @@ struct ActionView: View {
                     }
                 }
                 
-                Picker("Device", selection: self.$device) {
-                    ForEach(devices, id: \.self) {
-                        Text($0)
-                    }
+                HStack {
+                    Text("Device")
+                    Spacer()
+                    Text(self.device).foregroundStyle(.gray)
                 }
                 
                 Toggle(isOn: self.$hidden) {

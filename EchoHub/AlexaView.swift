@@ -16,7 +16,7 @@ struct AlexaView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 NavigationBarView()
-                    .frame(width: 400)
+                    .frame(width: UIScreen.main.bounds.width)
                     .padding(.bottom, 5)
                     .background(primaryColor)
                 ScrollView(.vertical, showsIndicators: false, content: {
