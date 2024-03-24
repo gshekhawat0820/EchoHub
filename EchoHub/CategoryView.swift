@@ -11,6 +11,7 @@ struct CategoryView: View {
     
     var title: String
     var actions: [Action]
+    @Binding var isAdmin: Bool
     
     var body: some View {
         HStack {
@@ -25,7 +26,9 @@ struct CategoryView: View {
         .padding(.bottom, 10)
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
-                ActionIconView(action: action)
+                if (isAdmin || !action.hidden) {
+                    ActionIconView(isAdmin: $isAdmin, action: action)
+                }
             }
         })
         .padding(15)
@@ -33,7 +36,7 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(title: "Household", actions: [])
+    CategoryView(title: "Household", actions: [], isAdmin: .constant(false))
         .previewLayout(.sizeThatFits)
         
 }

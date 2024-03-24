@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionIconView: View {
     @State private var showingSheet = false;
-    
+    @Binding var isAdmin: Bool
     let action: Action;
     var body: some View {
         VStack(spacing: 6, content: {
@@ -30,11 +30,19 @@ struct ActionIconView: View {
                     }
                 )
             }
-            Button(action.name) {
-                showingSheet.toggle();
+            if isAdmin {
+                Button(action.name) {
+                    showingSheet.toggle();
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
             }
-            .font(.title3)
-            .fontWeight(.semibold)
+            else {
+                Text("\(action.name)")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+            }
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {

@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
-struct AssistantSelectView: View {    
+struct AssistantSelectView: View {
+    @Binding var passwordExists: Bool
     var body: some View {
         NavigationStack {
             ZStack {
@@ -25,7 +26,7 @@ struct AssistantSelectView: View {
                         .foregroundColor(.white)
                         .frame(width: 115, height: 100)
                     Spacer().frame(height: 0)
-                    Text("Please select your assistant:")
+                    Text("Please select your assistant: ")
                         .foregroundStyle(Color.white)
                         .font(.system(size: 25))
                         .fontWeight(.light)
@@ -55,6 +56,13 @@ struct AssistantSelectView: View {
                                     .stroke(.white, lineWidth: 2)
                             )
                     });
+                    
+                    Button(action: {
+                        KeychainManager.deletePassword()
+                        passwordExists = false
+                    }, label: {
+                        Text("Reset Password").foregroundStyle(.white)
+                    })
                 }
             }
         }
@@ -67,5 +75,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView()
+    AssistantSelectView(passwordExists: .constant(true))
 }
