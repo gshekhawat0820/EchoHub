@@ -11,12 +11,96 @@ import SwiftData
 @main
 @MainActor
 struct EchoHubApp: App {
-
+    @State private var passwordExists = KeychainManager.getPassword() != nil;
     var body: some Scene {
         WindowGroup {
-            AssistantSelectView()
+            if !passwordExists {
+                SetPasswordView(passwordExists: $passwordExists)
+            } else {
+                AssistantSelectView(passwordExists: $passwordExists)
+            }
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+class KeychainManager {
+    enum KeychainError: Error {
+        case duplicateEntry
+        case unknown(OSStatus)
+    }
+    
+    static func save(service: String, account: String, password: Data) throws {
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service as AnyObject,
+            kSecAttrAccount as String: account as AnyObject,
+            kSecValueData as String: password as AnyObject
+        ]
+        
+        let status = SecItemAdd(query as CFDictionary, nil)
+        
+        guard status != errSecDuplicateItem else {
+            throw KeychainError.duplicateEntry
+        }
+        
+        guard status == errSecSuccess else {
+            throw KeychainError.unknown(status)
+        }
+    }
+    
+    static func get(service: String, account: String) -> Data? {
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service as AnyObject,
+            kSecAttrAccount as String: account as AnyObject,
+            kSecReturnData as String: kCFBooleanTrue,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        var result: AnyObject?
+        SecItemCopyMatching(query as CFDictionary, &result)
+        return result as? Data
+    }
+    
+    static func delete(service: String, account: String) throws {
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service as AnyObject,
+            kSecAttrAccount as String: account as AnyObject,
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        guard status == errSecSuccess else {
+            throw KeychainError.unknown(status)
+        }
+        
+        print("successfully deleted password")
+    }
+    
+    static func getPassword() -> String? {
+        guard let data = KeychainManager.get(service: "EchoHub", account: "user") else {
+            return nil
+        }
+        let password = String(decoding: data, as: UTF8.self)
+        return password
+    }
+    
+    static func savePassword(password: String) {
+        do {
+            try KeychainManager.save(service: "EchoHub", account: "user", password: password.data(using: .utf8) ?? Data())
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func deletePassword() {
+        do {
+            try KeychainManager.delete(service: "EchoHub", account: "user")
+        } catch {
+            print(error)
+        }
     }
 }
 
