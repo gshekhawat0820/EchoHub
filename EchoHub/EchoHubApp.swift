@@ -11,6 +11,13 @@ import SwiftData
 @main
 @MainActor
 struct EchoHubApp: App {
+    
+    init() {
+        UserDefaults.standard.register(defaults: [
+            "language": "English",
+            "voice": "Salli"
+        ])
+    }
 
     var body: some Scene {
         WindowGroup {
