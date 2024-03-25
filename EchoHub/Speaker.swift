@@ -10,13 +10,30 @@ import AVFoundation
 import AWSPolly
 
 class Speaker {
-    let player = AVPlayer();
+    let player = AVQueuePlayer();
     let synthesizer = AVSpeechSynthesizer();
     var cache: [Voice: URL] = [:];
     
     init() {
+        player.actionAtItemEnd = .pause;
+
         AVSpeechSynthesisVoice.speechVoices();
+        
+        NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: nil
+        ) { [weak self] _ in
+            self?.advance();
+        };
     }
+    
+    func advance() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.player.advanceToNextItem()
+            self?.player.play();
+        }
+     }
     
     func getStringLanguageCode(voiceId: AWSPollyVoiceId) -> String {
         switch voiceId {
@@ -91,7 +108,7 @@ class Speaker {
         let voice = Voice(id: input.voiceId, languageCode: input.languageCode, prompt: input.text);
         if let url = self.cache[voice] {
             print("Using cached URL");
-            self.player.replaceCurrentItem(with: AVPlayerItem(url: url));
+            self.player.insert(AVPlayerItem(url: url as URL), after: self.player.items().last);
             self.player.play();
             return;
         }
@@ -119,7 +136,7 @@ class Speaker {
             if let url = awsTask.result {
                 // Try playing the data using the system AVAudioPlayer
                 print("Playing URL audio");
-                self.player.replaceCurrentItem(with: AVPlayerItem(url: url as URL));
+                self.player.insert(AVPlayerItem(url: url as URL), after: self.player.items().last);
                 self.player.play();
                 
                 self.cache[voice] = url as URL;
