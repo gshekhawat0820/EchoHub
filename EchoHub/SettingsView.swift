@@ -38,8 +38,8 @@ struct SettingsView: View {
                     .pickerStyle(.inline)
                     .onChange(of: selectedVoice) {
                         if let voice = voices[selectedVoice] {
-                            speechObject.ActionToSpeech(
-                                action_command: voice.sample,
+                            speaker.speak(
+                                action: voice.prompt,
                                 voice: (voice.id, voice.languageCode)
                             );
                             
