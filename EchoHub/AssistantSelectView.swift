@@ -10,11 +10,28 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
+    @State private var showingSheet = false;
     @Binding var passwordExists: Bool
+  
     var body: some View {
         NavigationStack {
             ZStack {
                 primaryColor.ignoresSafeArea()
+                HStack(alignment: .top) {
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Button(
+                            action: {
+                                showingSheet.toggle();
+                            }
+                        ) {
+                            Image(systemName: "gearshape.fill")
+                                .foregroundStyle(.white)
+                                .padding()
+                        }
+                        Spacer()
+                    }
+                }
                 VStack(spacing: 50) {
                     Text("Welcome to EchoHub")
                         .foregroundStyle(Color.white)
@@ -64,6 +81,8 @@ struct AssistantSelectView: View {
                         Text("Reset Password").foregroundStyle(.white)
                     })
                 }
+            }.sheet(isPresented: $showingSheet) {
+                SettingsView()
             }
         }
     }

@@ -16,8 +16,8 @@ struct ActionIconView: View {
             ZStack {
                 Button(
                     action: {
-                        speechObject.ActionToSpeech(action_command: action.prompt)
-                    }, 
+                        speaker.speak(action: action.prompt)
+                    },
                     label: {
                         Image(uiImage: UIImage(data: action.imageData!)!)
                             .resizable()
