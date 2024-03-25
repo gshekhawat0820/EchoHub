@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoryView: View {
+    @ObservedObject var alexaFlag: AlexaFlag
     
     var title: String
     var actions: [Action]
@@ -25,15 +26,9 @@ struct CategoryView: View {
         .padding(.bottom, 10)
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
-                ActionIconView(action: action)
+                ActionIconView(alexaFlag: alexaFlag, action: action)
             }
         })
         .padding(15)
     }
-}
-
-#Preview {
-    CategoryView(title: "Household", actions: [])
-        .previewLayout(.sizeThatFits)
-        
 }

@@ -1,0 +1,39 @@
+[
+    {
+        "id" : 1,
+        "name" : "Increase thermostat",
+        "image": "temp_up",
+        "description" : "Hey Google, increase the temperature by 1 degree"
+    },
+    {
+        "id" : 2,
+        "name" : "Decrease thermostat",
+        "image": "temp_down",
+        "description" : "Hey Google, decrease the temperature by 1 degree"
+    },
+    {
+        "id" : 3,
+        "name" : "Lights on",
+        "image": "light_on",
+        "description" : "Hey Google, turn on the lights"
+    },
+    {
+        "id" : 4,
+        "name" : "Lights off",
+        "image": "light_off",
+        "description" : "Hey Google, turn off the lights"
+    },
+    {
+        "id" : 5,
+        "name" : "Lock front door",
+        "image": "door_lock",
+        "description" : "Hey Google, lock the front door"
+    },
+    {
+        "id" : 6,
+        "name" : "Unlock front door",
+        "image": "door_unlock",
+        "description" : "Hey Google, unlock the front door"
+    }
+    
+]

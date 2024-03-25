@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ActionIconView: View {
     @State private var showingSheet = false;
+    @ObservedObject var alexaFlag: AlexaFlag
     
     let action: Action;
     var body: some View {
@@ -17,7 +18,7 @@ struct ActionIconView: View {
                 Button(
                     action: {
                         speechObject.ActionToSpeech(action_command: action.prompt)
-                    }, 
+                    },
                     label: {
                         Image(uiImage: UIImage(data: action.imageData!)!)
                             .resizable()
@@ -38,7 +39,11 @@ struct ActionIconView: View {
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {
-            ActionView(action: action)
+            if alexaFlag.isAlexa == true {
+                AlexaActionView(action: nil)
+            } else{
+                GoogleActionView(action: nil)
+            }
         }
     }
 }

@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
-struct AssistantSelectView: View {    
+struct AssistantSelectView: View {
+    @ObservedObject var alexaFlag: AlexaFlag
     var body: some View {
         NavigationStack {
             ZStack {
@@ -30,7 +31,9 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        AlexaView()
+                        DeviceView(alexaFlag: alexaFlag).onAppear {
+                            alexaFlag.isAlexa = true
+                        }
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -43,7 +46,9 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        // ActionView(action: nil)
+                        DeviceView(alexaFlag: alexaFlag).onAppear {
+                            alexaFlag.isAlexa = false
+                        }
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -65,7 +70,3 @@ struct AssistantSelectView: View {
 // Communication: text, call, broadcast through house, Urgent response
 // Routines: morning routine, bedtime routine
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
-
-#Preview {
-    AssistantSelectView()
-}

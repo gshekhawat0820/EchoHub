@@ -1,43 +1,49 @@
 //
-//  AlexaView.swift
+//  DeviceView.swift
 //  EchoHub
 //
-//  Created by Gaurav Shekhawat on 2/7/24.
+//  Created by Sambujang Fofana on 3/21/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct AlexaView: View {
+struct DeviceView: View {
     @Environment(\.modelContext) var context
     @Query let actions: [Action];
+    @ObservedObject var alexaFlag: AlexaFlag
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationBarView()
+                NavigationBarView(alexaFlag: alexaFlag)
                     .frame(width: UIScreen.main.bounds.width)
                     .padding(.bottom, 5)
                     .background(primaryColor)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(spacing: 0, content: {
                         CategoryView(
+                            alexaFlag: alexaFlag,
                             title: "Household 🏠",
                             actions: actions.filter({ $0.category == "Household" })
                         )
                         CategoryView(
+                            alexaFlag: alexaFlag,
                             title: "Entertainment 🎥",
                             actions: actions.filter({ $0.category == "Entertainment" })
                         )
                         CategoryView(
+                            alexaFlag: alexaFlag,
                             title: "Communication 📞",
                             actions: actions.filter({ $0.category == "Communication" })
                         )
                         CategoryView(
+                            alexaFlag: alexaFlag,
                             title: "Routines ⏰",
                             actions: actions.filter({ $0.category == "Routines" })
                         )
                         CategoryView(
+                            alexaFlag: alexaFlag,
                             title: "Information & Chores 📋",
                             actions: actions.filter({ $0.category == "Information & Chores" })
                         )
@@ -62,4 +68,3 @@ struct AlexaView: View {
         }
     }
 }
-

@@ -1,14 +1,14 @@
 //
-//  GoogleView.swift
+//  AlexaActionView.swift
 //  EchoHub
 //
-//  Created by Eric Lau on 2/7/24.
+//  Created by Sambujang Fofana on 3/21/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct ActionView: View {
+struct GoogleActionView: View {
     @Environment(\.modelContext) private var modelContext;
     @Environment(\.dismiss) private var dismiss;
     
@@ -21,7 +21,7 @@ struct ActionView: View {
     @State private var name: String = "";
     @State private var prompt: String =  "";
     @State private var category: String = "Household";
-    @State private var device: String = "Amazon Alexa";
+    @State private var device: String = "Google Home";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
     
@@ -97,7 +97,7 @@ struct ActionView: View {
                 }
                 
                 Section(header: Text("Prompt")) {
-                    TextField("Prompt (e.g. 'Alexa, turn on the lights')", text: self.$prompt, axis: .vertical)
+                    TextField("Prompt (e.g. 'Hey Google, turn on the lights')", text: self.$prompt, axis: .vertical)
                 }
                 
                 if (self.image == nil) {
@@ -111,7 +111,7 @@ struct ActionView: View {
                         .clipShape(.buttonBorder)
                 }
                 
-                Menu("Set icon") {
+                Menu("Set Icon") {
                     Button(
                         action: {
                             self.sourceType = UIImagePickerController.SourceType.camera;
@@ -131,7 +131,7 @@ struct ActionView: View {
                         },
                         label: {
                             Label(
-                                "Photo library",
+                                "Photo Library",
                                 systemImage: "photo.stack"
                             )
                         }
