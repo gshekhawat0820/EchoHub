@@ -1,0 +1,26 @@
+[
+    {
+        "id" : 11,
+        "name" : "Check weather",
+        "image": "weather",
+        "description" : "Hey Google, what's the weather like today?"
+    },
+    {
+        "id" : 12,
+        "name" : "Check calendar",
+        "image": "calendar",
+        "description" : "Hey Google, what's on my calendar today?"
+    },
+    {
+        "id" : 13,
+        "name" : "Add to Grocery List",
+        "image": "grocery",
+        "description" : "Hey Google, add to my grocery list"
+    },
+    {
+        "id" : 14,
+        "name" : "Reorder item",
+        "image": "reorder",
+        "description" : "Hey Google, reorder my last purchased item"
+    }
+]

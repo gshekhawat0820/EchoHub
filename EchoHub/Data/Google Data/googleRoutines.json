@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 15,
+        "name" : "Morning routine",
+        "image": "morning_routine",
+        "description" : "Hey Google, start my morning routine"
+    },
+    {
+        "id" : 16,
+        "name" : "Night routine",
+        "image": "night_routine",
+        "description" : "Hey Google, start my night time routine"
+    }
+]

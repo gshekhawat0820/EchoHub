@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ActionIconView: View {
+    @Binding var isAdmin: Bool;
     @State private var showingSheet = false;
-    @Binding var isAdmin: Bool
+    let assistantName: String;
     let action: Action;
     var body: some View {
         VStack(spacing: 6, content: {
@@ -46,7 +47,7 @@ struct ActionIconView: View {
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {
-            ActionView(action: action)
+            ActionView(action: action, assistantName: self.assistantName);
         }
     }
 }

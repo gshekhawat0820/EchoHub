@@ -1,5 +1,5 @@
 //
-//  GoogleView.swift
+//  ActionView.swift
 //  EchoHub
 //
 //  Created by Eric Lau on 2/7/24.
@@ -13,6 +13,7 @@ struct ActionView: View {
     @Environment(\.dismiss) private var dismiss;
     
     let action: Action?;
+    let assistantName: String;
 
     @State private var showPicker = false;
     @State private var sourceType = UIImagePickerController.SourceType.camera;
@@ -21,18 +22,19 @@ struct ActionView: View {
     @State private var name: String = "";
     @State private var prompt: String =  "";
     @State private var category: String = "Household";
-    @State private var device: String = "Amazon Alexa";
+    @State private var device: String = "";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
     
     @State private var isAlertShown: Bool = false;
 
-    let devices = ["Amazon Alexa", "Google Home"];
     let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
     
-    init(action: Action?) {
+    init(action: Action?, assistantName: String) {
+        self.assistantName = assistantName;
         guard let action = action else {
             self.action = nil;
+            _device = .init(initialValue: assistantName);
             return;
         }
 
@@ -111,7 +113,7 @@ struct ActionView: View {
                         .clipShape(.buttonBorder)
                 }
                 
-                Menu("Set icon") {
+                Menu("Set Icon") {
                     Button(
                         action: {
                             self.sourceType = UIImagePickerController.SourceType.camera;
@@ -131,7 +133,7 @@ struct ActionView: View {
                         },
                         label: {
                             Label(
-                                "Photo library",
+                                "Photo Library",
                                 systemImage: "photo.stack"
                             )
                         }

@@ -121,7 +121,7 @@ let sharedModelContainer: ModelContainer = {
         
         guard try container.mainContext.fetch(actionFetchDescriptor).count == 0 else { return container }
         
-        for icon in householdIcons {
+        for icon in AlHouseholdIcons {
             let action = Action(
                 name: icon.name,
                 prompt: icon.description,
@@ -134,7 +134,7 @@ let sharedModelContainer: ModelContainer = {
             container.mainContext.insert(action)
         }
         
-        for icon in entertainmentIcons {
+        for icon in AlEntertainmentIcons {
             let action = Action(
                 name: icon.name,
                 prompt: icon.description,
@@ -147,7 +147,7 @@ let sharedModelContainer: ModelContainer = {
             container.mainContext.insert(action)
         }
         
-        for icon in communicationIcons {
+        for icon in AlCommunicationIcons {
             let action = Action(
                 name: icon.name,
                 prompt: icon.description,
@@ -160,7 +160,7 @@ let sharedModelContainer: ModelContainer = {
             container.mainContext.insert(action)
         }
         
-        for icon in infoChoresIcons {
+        for icon in AlInfoChoresIcons {
             let action = Action(
                 name: icon.name,
                 prompt: icon.description,
@@ -173,12 +173,76 @@ let sharedModelContainer: ModelContainer = {
             container.mainContext.insert(action)
         }
         
-        for icon in routinesIcons {
+        for icon in AlRoutinesIcons {
             let action = Action(
                 name: icon.name,
                 prompt: icon.description,
                 category: "Routines",
                 device: "Amazon Alexa",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        for icon in GoHouseholdIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Household",
+                device: "Google Home",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in GoEntertainmentIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Entertainment",
+                device: "Google Home",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in GoCommunicationIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Communication",
+                device: "Google Home",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+        
+        for icon in GoInfoChoresIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Information & Chores",
+                device: "Google Home",
+                hidden: false,
+                favorite: false,
+                image: UIImage(named: icon.image)!
+            )
+            container.mainContext.insert(action)
+        }
+
+        for icon in GoRoutinesIcons {
+            let action = Action(
+                name: icon.name,
+                prompt: icon.description,
+                category: "Routines",
+                device: "Google Home",
                 hidden: false,
                 favorite: false,
                 image: UIImage(named: icon.image)!

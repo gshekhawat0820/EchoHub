@@ -1,0 +1,57 @@
+[
+    {
+        "id" : 1,
+        "name" : "Turn on TV",
+        "image": "tv_on",
+        "description" : "Hey Google, turn on the TV"
+    },
+    {
+        "id" : 2,
+        "name" : "Turn off TV",
+        "image": "tv_off",
+        "description" : "Hey Google, turn off the TV"
+    },
+    {
+        "id" : 3,
+        "name" : "Watch Prime",
+        "image": "prime_video",
+        "description" : "Hey Google, turn on Prime Video"
+    },
+    {
+        "id" : 4,
+        "name" : "Play music",
+        "image": "music",
+        "description" : "Hey Google, play some music"
+    },
+    {
+        "id" : 5,
+        "name" : "Play podcast",
+        "image": "podcast",
+        "description" : "Hey Google, turn on a podcast"
+    },
+    {
+        "id" : 6,
+        "name" : "Radio",
+        "image": "radio",
+        "description" : "Hey Google, turn on the radio"
+    },
+    {
+        "id" : 7,
+        "name" : "Audiobook",
+        "image": "audiobook",
+        "description" : "Hey Google, play an audiobook"
+    },
+    {
+        "id" : 8,
+        "name" : "News",
+        "image": "news",
+        "description" : "Hey Google, tell me the news"
+    },
+    {
+        "id" : 9,
+        "name" : "Games",
+        "image": "game_controller",
+        "description" : "Hey Google, play a game with me"
+    }
+    
+]

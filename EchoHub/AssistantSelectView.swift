@@ -11,7 +11,7 @@ import PhotosUI
 
 struct AssistantSelectView: View {
     @State private var showingSheet = false;
-    @Binding var passwordExists: Bool
+    @Binding var passwordExists: Bool;
   
     var body: some View {
         NavigationStack {
@@ -48,7 +48,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        AlexaView()
+                        DeviceView(assistantName: "Amazon Alexa")
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -61,7 +61,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        // ActionView(action: nil)
+                        DeviceView(assistantName: "Google Home")
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -94,5 +94,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView(passwordExists: .constant(true))
+    AssistantSelectView(passwordExists: .constant(true));
 }

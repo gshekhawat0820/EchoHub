@@ -9,9 +9,11 @@ import SwiftUI
 
 struct NavigationBarView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
+    @Binding var isAdmin: Bool;
     @State private var showingSheet = false;
-    @Binding var isAdmin: Bool
     @State private var showPasscode = false;
+
+    let assistantName: String;
     var body: some View {
         HStack {
             Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
@@ -53,7 +55,7 @@ struct NavigationBarView: View {
         }
         .background(primaryColor)
         .sheet(isPresented: $showingSheet) {
-            ActionView(action: nil)
+            ActionView(action: nil, assistantName: self.assistantName)
         }
         .sheet(isPresented: $showPasscode) {
             PasscodeView(isAdmin: $isAdmin)
@@ -62,7 +64,7 @@ struct NavigationBarView: View {
 }
 
 #Preview {
-    NavigationBarView(isAdmin: .constant(false))
+    NavigationBarView(isAdmin: .constant(false), assistantName: "Amazon Alexa")
         .previewLayout(.sizeThatFits)
         .padding()
 }

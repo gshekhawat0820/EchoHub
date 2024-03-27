@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoryView: View {
+    let assistantName: String;
     
     var title: String
     var actions: [Action]
@@ -17,7 +18,7 @@ struct CategoryView: View {
         HStack {
             Text(title)
                 .font(.title)
-            .fontWeight(.heavy)
+                .fontWeight(.heavy)
             
             Spacer()
         }
@@ -27,7 +28,7 @@ struct CategoryView: View {
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
                 if (isAdmin || !action.hidden) {
-                    ActionIconView(isAdmin: $isAdmin, action: action)
+                    ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, action: action)
                 }
             }
         })
@@ -36,7 +37,7 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(title: "Household", actions: [], isAdmin: .constant(false))
+    CategoryView(assistantName: "Amazon Alexa", title: "Household", actions: [], isAdmin: .constant(false))
         .previewLayout(.sizeThatFits)
         
 }

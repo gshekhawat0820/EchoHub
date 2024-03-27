@@ -9,13 +9,21 @@ import Foundation
 import SwiftUI
 import AWSPolly
 
-// DATA
 let speaker: Speaker = Speaker()
-let householdIcons: [ActionJson] = Bundle.main.decode("Data/household.json")
-let entertainmentIcons: [ActionJson] = Bundle.main.decode("Data/entertainment.json")
-let communicationIcons: [ActionJson] = Bundle.main.decode("Data/communication.json")
-let infoChoresIcons: [ActionJson] = Bundle.main.decode("Data/info_chores.json")
-let routinesIcons: [ActionJson] = Bundle.main.decode("Data/routines.json")
+
+// Amazon Alexa DATA
+let AlHouseholdIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaHousehold.json")
+let AlEntertainmentIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaEntertainment.json")
+let AlCommunicationIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaCommunication.json")
+let AlInfoChoresIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaInfo_chores.json")
+let AlRoutinesIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaRoutines.json")
+
+// Google Home DATA
+let GoHouseholdIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleHousehold.json")
+let GoEntertainmentIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleEntertainment.json")
+let GoCommunicationIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleCommunication.json")
+let GoInfoChoresIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleInfo_chores.json")
+let GoRoutinesIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleRoutines.json")
 
 // LAYOUT
 let primaryColor = Color(red: 0, green: 90/255, blue: 168/255)
