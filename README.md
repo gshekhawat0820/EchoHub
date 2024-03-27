@@ -4,7 +4,7 @@ Nonverbal individuals have to bridge a gap when communicating. To aid their abil
 
 ## Development
 
-If you don't already have CocoaPods, run `sudo gem install cocoapods` and `pod setup`.
+If you don't already have CocoaPods, run `sudo gem install cocoapods`.
 
 1. Run `pod install`
 2. Open XCode by clicking on `EchoHub.xcworkspace`
