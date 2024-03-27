@@ -12,7 +12,6 @@ import AWSPolly
 let speaker: Speaker = Speaker()
 
 // Amazon Alexa DATA
-let speechObject: ActionToSpeech = ActionToSpeech()
 let AlHouseholdIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaHousehold.json")
 let AlEntertainmentIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaEntertainment.json")
 let AlCommunicationIcons: [ActionJson] = Bundle.main.decode("Data/Alexa Data/alexaCommunication.json")

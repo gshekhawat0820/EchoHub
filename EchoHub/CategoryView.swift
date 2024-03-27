@@ -28,7 +28,7 @@ struct CategoryView: View {
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
                 if (isAdmin || !action.hidden) {
-                    ActionIconView(isAdmin: $isAdmin, action: action, assistantName: self.assistantName)
+                    ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, action: action)
                 }
             }
         })
@@ -37,7 +37,7 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(title: "Household", actions: [], isAdmin: .constant(false), assistantName: "Amazon Alexa")
+    CategoryView(assistantName: "Amazon Alexa", title: "Household", actions: [], isAdmin: .constant(false))
         .previewLayout(.sizeThatFits)
         
 }

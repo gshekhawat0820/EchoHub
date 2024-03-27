@@ -25,11 +25,13 @@ struct DeviceView: View {
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(spacing: 0, content: {
                         CategoryView(
+                            assistantName: self.assistantName,
                             title: "Favorites ⭐",
                             actions: actions.filter({ $0.favorite == true && $0.device == self.assistantName }),
                             isAdmin: $isAdmin
                         )
                         CategoryView(
+                            assistantName: self.assistantName,
                             title: "Household 🏠",
                             actions: actions.filter({ $0.category == "Household" && $0.device == self.assistantName }),
                             isAdmin: $isAdmin
