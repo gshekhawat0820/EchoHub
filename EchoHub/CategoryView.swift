@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryView: View {
-    @ObservedObject var alexaFlag: AlexaFlag
+    let assistantName: String;
     
     var title: String
     var actions: [Action]
@@ -17,7 +17,7 @@ struct CategoryView: View {
         HStack {
             Text(title)
                 .font(.title)
-            .fontWeight(.heavy)
+                .fontWeight(.heavy)
             
             Spacer()
         }
@@ -26,7 +26,7 @@ struct CategoryView: View {
         .padding(.bottom, 10)
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
-                ActionIconView(alexaFlag: alexaFlag, action: action)
+                ActionIconView(assistantName: self.assistantName, action: action)
             }
         })
         .padding(15)

@@ -10,7 +10,8 @@ import SwiftUI
 struct NavigationBarView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
     @State private var showingSheet = false;
-    @ObservedObject var alexaFlag: AlexaFlag
+    
+    let assistantName: String;
     
     var body: some View {
         HStack {
@@ -39,11 +40,7 @@ struct NavigationBarView: View {
         }
         .background(primaryColor)
         .sheet(isPresented: $showingSheet) {
-            if alexaFlag.isAlexa == true {
-                AlexaActionView(action: nil)
-            } else{
-                GoogleActionView(action: nil)
-            }
+            ActionView(action: nil, assistantName: self.assistantName)
         }
     }
 }

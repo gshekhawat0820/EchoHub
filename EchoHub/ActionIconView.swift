@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionIconView: View {
     @State private var showingSheet = false;
-    @ObservedObject var alexaFlag: AlexaFlag
+    let assistantName: String;
     
     let action: Action;
     var body: some View {
@@ -39,11 +39,7 @@ struct ActionIconView: View {
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {
-            if alexaFlag.isAlexa == true {
-                AlexaActionView(action: nil)
-            } else{
-                GoogleActionView(action: nil)
-            }
+            ActionView(action: action, assistantName: self.assistantName);
         }
     }
 }

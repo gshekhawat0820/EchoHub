@@ -10,7 +10,6 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
-    @ObservedObject var alexaFlag: AlexaFlag
     var body: some View {
         NavigationStack {
             ZStack {
@@ -31,9 +30,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(alexaFlag: alexaFlag).onAppear {
-                            alexaFlag.isAlexa = true
-                        }
+                        DeviceView(assistantName: "Amazon Alexa")
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -46,9 +43,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(alexaFlag: alexaFlag).onAppear {
-                            alexaFlag.isAlexa = false
-                        }
+                        DeviceView(assistantName: "Google Home")
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)

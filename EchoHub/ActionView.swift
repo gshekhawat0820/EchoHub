@@ -1,18 +1,19 @@
 //
-//  AlexaActionView.swift
+//  ActionView.swift
 //  EchoHub
 //
-//  Created by Sambujang Fofana on 3/21/24.
+//  Created by Eric Lau on 2/7/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct GoogleActionView: View {
+struct ActionView: View {
     @Environment(\.modelContext) private var modelContext;
     @Environment(\.dismiss) private var dismiss;
     
     let action: Action?;
+    let assistantName: String;
 
     @State private var showPicker = false;
     @State private var sourceType = UIImagePickerController.SourceType.camera;
@@ -21,18 +22,19 @@ struct GoogleActionView: View {
     @State private var name: String = "";
     @State private var prompt: String =  "";
     @State private var category: String = "Household";
-    @State private var device: String = "Google Home";
+    @State private var device: String = "";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
     
     @State private var isAlertShown: Bool = false;
 
-    let devices = ["Amazon Alexa", "Google Home"];
     let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
     
-    init(action: Action?) {
+    init(action: Action?, assistantName: String) {
+        self.assistantName = assistantName;
         guard let action = action else {
             self.action = nil;
+            _device = .init(initialValue: assistantName);
             return;
         }
 
@@ -97,7 +99,7 @@ struct GoogleActionView: View {
                 }
                 
                 Section(header: Text("Prompt")) {
-                    TextField("Prompt (e.g. 'Hey Google, turn on the lights')", text: self.$prompt, axis: .vertical)
+                    TextField("Prompt (e.g. 'Alexa, turn on the lights')", text: self.$prompt, axis: .vertical)
                 }
                 
                 if (self.image == nil) {
