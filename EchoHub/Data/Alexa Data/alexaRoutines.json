@@ -2,13 +2,13 @@
     {
         "id" : 15,
         "name" : "Morning routine",
-        "image": "questionmark",
+        "image": "morning_routine",
         "description" : "Alexa, start my morning routine"
     },
     {
         "id" : 16,
         "name" : "Night routine",
-        "image": "questionmark",
+        "image": "night_routine",
         "description" : "Alexa, start my night time routine"
     }
 ]

@@ -2,55 +2,55 @@
     {
         "id" : 1,
         "name" : "Turn on TV",
-        "image": "questionmark",
+        "image": "tv_on",
         "description" : "Alexa, turn on the TV"
     },
     {
         "id" : 2,
         "name" : "Turn off TV",
-        "image": "questionmark",
+        "image": "tv_off",
         "description" : "Alexa, turn off the TV"
     },
     {
         "id" : 3,
         "name" : "Watch Prime",
-        "image": "questionmark",
+        "image": "prime_video",
         "description" : "Alexa, turn on Prime Video"
     },
     {
         "id" : 4,
         "name" : "Play music",
-        "image": "questionmark",
+        "image": "music",
         "description" : "Alexa, play some music"
     },
     {
         "id" : 5,
         "name" : "Play podcast",
-        "image": "questionmark",
+        "image": "podcast",
         "description" : "Alexa, turn on a podcast"
     },
     {
         "id" : 6,
         "name" : "Radio",
-        "image": "questionmark",
+        "image": "radio",
         "description" : "Alexa, turn on the radio"
     },
     {
         "id" : 7,
         "name" : "Audiobook",
-        "image": "questionmark",
+        "image": "audiobook",
         "description" : "Alexa, play an audiobook"
     },
     {
         "id" : 8,
         "name" : "News",
-        "image": "questionmark",
+        "image": "news",
         "description" : "Alexa, tell me the news"
     },
     {
         "id" : 9,
         "name" : "Games",
-        "image": "questionmark",
+        "image": "game_controller",
         "description" : "Alexa, play a game with me"
     }
     

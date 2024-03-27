@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ActionIconView: View {
+    @Binding var isAdmin: Bool;
     @State private var showingSheet = false;
     let assistantName: String;
-    
     let action: Action;
     var body: some View {
         VStack(spacing: 6, content: {
             ZStack {
                 Button(
                     action: {
-                        speechObject.ActionToSpeech(action_command: action.prompt)
+                        speaker.speak(action: action.prompt)
                     },
                     label: {
                         Image(uiImage: UIImage(data: action.imageData!)!)
@@ -31,11 +31,19 @@ struct ActionIconView: View {
                     }
                 )
             }
-            Button(action.name) {
-                showingSheet.toggle();
+            if isAdmin {
+                Button(action.name) {
+                    showingSheet.toggle();
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
             }
-            .font(.title3)
-            .fontWeight(.semibold)
+            else {
+                Text("\(action.name)")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+            }
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {

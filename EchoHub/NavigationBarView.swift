@@ -9,16 +9,17 @@ import SwiftUI
 
 struct NavigationBarView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
+    @Binding var isAdmin: Bool;
     @State private var showingSheet = false;
-    
+    @State private var showPasscode = false;
+
     let assistantName: String;
-    
     var body: some View {
         HStack {
             Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
-                Image(systemName: "arrow.left").foregroundColor(.white)
+                Image(systemName: "arrow.left").foregroundColor(.white).font(.system(size:20))
             })
-            Spacer().frame(width: 70)
+            Spacer().frame(width: 90)
             Text("Echo")
                 .font(.title3)
                 .fontWeight(.bold)
@@ -28,19 +29,42 @@ struct NavigationBarView: View {
                 .font(.title3)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
-            Spacer().frame(width: 60)
+            Spacer().frame(width: 50)
             Button {
-                showingSheet.toggle();
+                if isAdmin {
+                    isAdmin = false
+                }
+                else {
+                    showPasscode.toggle()
+                }
             } label: {
-                Text("+")
-                    .font(.system(size: 40))
-                    .fontWeight(.light)
-                    .foregroundStyle(.white)
+                Image(systemName: !isAdmin ? "lock" : "lock.open")
+                    .foregroundColor(.white).font(.system(size: 20))
+            }
+            Spacer().frame(width: 20)
+            
+            if isAdmin {
+                Button {
+                    showingSheet.toggle();
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.white)
+                }
             }
         }
         .background(primaryColor)
         .sheet(isPresented: $showingSheet) {
             ActionView(action: nil, assistantName: self.assistantName)
         }
+        .sheet(isPresented: $showPasscode) {
+            PasscodeView(isAdmin: $isAdmin)
+        }
     }
+}
+
+#Preview {
+    NavigationBarView(isAdmin: .constant(false), assistantName: "Amazon Alexa")
+        .previewLayout(.sizeThatFits)
+        .padding()
 }

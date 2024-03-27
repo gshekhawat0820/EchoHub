@@ -1,2 +1,5 @@
 **/.DS_Store
 **/UserInterfaceState.xcuserstate
+Pods
+Podfile.lock
+awsconfiguration.json

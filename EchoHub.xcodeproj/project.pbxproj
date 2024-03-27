@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		120435592B7966290054CB12 /* ActionToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120435582B7966290054CB12 /* ActionToSpeech.swift */; };
-		12A4C6EE2BB0C1E100DF0230 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A4C6ED2BB0C1E100DF0230 /* ActionView.swift */; };
-		12A4C6FE2BB0E70200DF0230 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A4C6FD2BB0E70200DF0230 /* NavigationBarView.swift */; };
-		12A4C7002BB0EBC100DF0230 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A4C6FF2BB0EBC100DF0230 /* DeviceView.swift */; };
-		12A4C7022BB0EC3B00DF0230 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A4C7012BB0EC3B00DF0230 /* CategoryView.swift */; };
-		12A4C7042BB0ECB300DF0230 /* ActionIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A4C7032BB0ECB300DF0230 /* ActionIconView.swift */; };
+		120435592B7966290054CB12 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120435582B7966290054CB12 /* Speaker.swift */; };
+		21FFEA2A186111978F6020B2 /* Pods_EchoHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAE1A417DA86E3C6EC483D9 /* Pods_EchoHub.framework */; };
+		2606906C2BA9D23F00F71F12 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606906B2BA9D23F00F71F12 /* PasscodeView.swift */; };
+		2606906E2BA9D24800F71F12 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606906D2BA9D24800F71F12 /* NumberPadView.swift */; };
+		260690702BA9D25500F71F12 /* PasscodeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606906F2BA9D25500F71F12 /* PasscodeIndicatorView.swift */; };
+		260690722BACAD6300F71F12 /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260690712BACAD6300F71F12 /* SetPasswordView.swift */; };
 		260B06112B728EA300BD06D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260B06102B728EA300BD06D6 /* LaunchScreen.storyboard */; };
 		260B063F2B795DA200BD06D6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B06332B795DA100BD06D6 /* Constant.swift */; };
 		260B06402B795DA200BD06D6 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 260B06342B795DA100BD06D6 /* Data */; };
@@ -25,17 +25,20 @@
 		26D7412D2B71798400F93014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412C2B71798400F93014 /* Assets.xcassets */; };
 		26D741302B71798400F93014 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412F2B71798400F93014 /* Preview Assets.xcassets */; };
 		B2034E4D2B76808400DFF681 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2034E4C2B76808400DFF681 /* Action.swift */; };
+		B216EB7E2BAB4E9000B47037 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B216EB7D2BAB4E9000B47037 /* SettingsView.swift */; };
+		B26B8F492B744BC4000843B9 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F482B744BC4000843B9 /* ActionView.swift */; };
 		B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */; };
 		B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4C2B745783000843B9 /* ImagePickerView.swift */; };
+		B2C1440F2BA7962B004FFF9B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		120435582B7966290054CB12 /* ActionToSpeech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionToSpeech.swift; sourceTree = "<group>"; };
-		12A4C6ED2BB0C1E100DF0230 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
-		12A4C6FD2BB0E70200DF0230 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
-		12A4C6FF2BB0EBC100DF0230 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
-		12A4C7012BB0EC3B00DF0230 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		12A4C7032BB0ECB300DF0230 /* ActionIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionIconView.swift; sourceTree = "<group>"; };
+		120435582B7966290054CB12 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		177F77AC13A3E53CFAABD63A /* Pods-EchoHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchoHub.debug.xcconfig"; path = "Target Support Files/Pods-EchoHub/Pods-EchoHub.debug.xcconfig"; sourceTree = "<group>"; };
+		2606906B2BA9D23F00F71F12 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
+		2606906D2BA9D24800F71F12 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
+		2606906F2BA9D25500F71F12 /* PasscodeIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeIndicatorView.swift; sourceTree = "<group>"; };
+		260690712BACAD6300F71F12 /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
 		260B060F2B728E0200BD06D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		260B06102B728EA300BD06D6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		260B06332B795DA100BD06D6 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -49,9 +52,14 @@
 		26D741282B71798200F93014 /* AssistantSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSelectView.swift; sourceTree = "<group>"; };
 		26D7412C2B71798400F93014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26D7412F2B71798400F93014 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4CAE1A417DA86E3C6EC483D9 /* Pods_EchoHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EchoHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2034E4C2B76808400DFF681 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		B216EB7D2BAB4E9000B47037 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B26B8F482B744BC4000843B9 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B26B8F4C2B745783000843B9 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		CE024AED63F29BA70CEB0FEE /* Pods-EchoHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchoHub.release.xcconfig"; path = "Target Support Files/Pods-EchoHub/Pods-EchoHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21FFEA2A186111978F6020B2 /* Pods_EchoHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +77,11 @@
 		26D7411A2B71798200F93014 = {
 			isa = PBXGroup;
 			children = (
+				B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */,
 				26D741252B71798200F93014 /* EchoHub */,
 				26D741242B71798200F93014 /* Products */,
+				2FDB38211E83A2D1747713CA /* Pods */,
+				71186B23AB832FCC3F559045 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,12 +99,22 @@
 				260B060F2B728E0200BD06D6 /* Info.plist */,
 				26D741262B71798200F93014 /* EchoHubApp.swift */,
 				26D741282B71798200F93014 /* AssistantSelectView.swift */,
+				260B06122B74588700BD06D6 /* AlexaView.swift */,
+				260B063D2B795DA200BD06D6 /* CategoryView.swift */,
+				260690712BACAD6300F71F12 /* SetPasswordView.swift */,
+				B26B8F482B744BC4000843B9 /* ActionView.swift */,
+				260B063B2B795DA200BD06D6 /* ActionIconView.swift */,
+				260B06142B745AD100BD06D6 /* NavigationBarView.swift */,
 				B26B8F4C2B745783000843B9 /* ImagePickerView.swift */,
-				120435582B7966290054CB12 /* ActionToSpeech.swift */,
+				B216EB7D2BAB4E9000B47037 /* SettingsView.swift */,
+				2606906B2BA9D23F00F71F12 /* PasscodeView.swift */,
+				120435582B7966290054CB12 /* Speaker.swift */,
+				2606906D2BA9D24800F71F12 /* NumberPadView.swift */,
 				B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */,
 				B2034E4C2B76808400DFF681 /* Action.swift */,
 				260B063C2B795DA200BD06D6 /* CodableBundleExtension.swift */,
 				260B06332B795DA100BD06D6 /* Constant.swift */,
+				2606906F2BA9D25500F71F12 /* PasscodeIndicatorView.swift */,
 				260B06392B795DA200BD06D6 /* ActionJson.swift */,
 				260B06102B728EA300BD06D6 /* LaunchScreen.storyboard */,
 				260B06342B795DA100BD06D6 /* Data */,
@@ -117,6 +139,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2FDB38211E83A2D1747713CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				177F77AC13A3E53CFAABD63A /* Pods-EchoHub.debug.xcconfig */,
+				CE024AED63F29BA70CEB0FEE /* Pods-EchoHub.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		71186B23AB832FCC3F559045 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE1A417DA86E3C6EC483D9 /* Pods_EchoHub.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26D741332B71798400F93014 /* Build configuration list for PBXNativeTarget "EchoHub" */;
 			buildPhases = (
+				F5A44A7AD23810F250B1CC29 /* [CP] Check Pods Manifest.lock */,
 				26D7411F2B71798200F93014 /* Sources */,
 				26D741202B71798200F93014 /* Frameworks */,
 				26D741212B71798200F93014 /* Resources */,
+				589AED344A5200C4450D5C85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				260B06112B728EA300BD06D6 /* LaunchScreen.storyboard in Resources */,
+				B2C1440F2BA7962B004FFF9B /* awsconfiguration.json in Resources */,
 				26D741302B71798400F93014 /* Preview Assets.xcassets in Resources */,
 				260B06432B795DA200BD06D6 /* Images in Resources */,
 				260B06402B795DA200BD06D6 /* Data in Resources */,
@@ -186,24 +228,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		589AED344A5200C4450D5C85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EchoHub/Pods-EchoHub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EchoHub/Pods-EchoHub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EchoHub/Pods-EchoHub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5A44A7AD23810F250B1CC29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EchoHub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		26D7411F2B71798200F93014 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B216EB7E2BAB4E9000B47037 /* SettingsView.swift in Sources */,
+				260B06132B74588700BD06D6 /* AlexaView.swift in Sources */,
 				26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */,
-				120435592B7966290054CB12 /* ActionToSpeech.swift in Sources */,
+				260690702BA9D25500F71F12 /* PasscodeIndicatorView.swift in Sources */,
+				120435592B7966290054CB12 /* Speaker.swift in Sources */,
 				B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */,
 				12A4C6EE2BB0C1E100DF0230 /* ActionView.swift in Sources */,
 				12A4C7042BB0ECB300DF0230 /* ActionIconView.swift in Sources */,
 				26D741272B71798200F93014 /* EchoHubApp.swift in Sources */,
 				12A4C7022BB0EC3B00DF0230 /* CategoryView.swift in Sources */,
 				B2034E4D2B76808400DFF681 /* Action.swift in Sources */,
+				260B06492B795DA200BD06D6 /* CategoryView.swift in Sources */,
+				2606906E2BA9D24800F71F12 /* NumberPadView.swift in Sources */,
+				260B06152B745AD100BD06D6 /* NavigationBarView.swift in Sources */,
+				260690722BACAD6300F71F12 /* SetPasswordView.swift in Sources */,
 				260B06452B795DA200BD06D6 /* ActionJson.swift in Sources */,
 				12A4C6FE2BB0E70200DF0230 /* NavigationBarView.swift in Sources */,
 				B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */,
 				12A4C7002BB0EBC100DF0230 /* DeviceView.swift in Sources */,
 				260B063F2B795DA200BD06D6 /* Constant.swift in Sources */,
+				B26B8F492B744BC4000843B9 /* ActionView.swift in Sources */,
+				2606906C2BA9D23F00F71F12 /* PasscodeView.swift in Sources */,
+				260B06472B795DA200BD06D6 /* ActionIconView.swift in Sources */,
 				260B06482B795DA200BD06D6 /* CodableBundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +342,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -311,7 +405,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -332,13 +426,14 @@
 		};
 		26D741342B71798400F93014 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 177F77AC13A3E53CFAABD63A /* Pods-EchoHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EchoHub/Preview Content\"";
-				DEVELOPMENT_TEAM = BF6VFYGTA3;
+				DEVELOPMENT_TEAM = DQGTG9S9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EchoHub/Info.plist;
@@ -365,13 +460,14 @@
 		};
 		26D741352B71798400F93014 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE024AED63F29BA70CEB0FEE /* Pods-EchoHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EchoHub/Preview Content\"";
-				DEVELOPMENT_TEAM = BF6VFYGTA3;
+				DEVELOPMENT_TEAM = DQGTG9S9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EchoHub/Info.plist;
