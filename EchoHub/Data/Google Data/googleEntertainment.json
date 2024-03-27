@@ -2,55 +2,55 @@
     {
         "id" : 1,
         "name" : "Turn on TV",
-        "image": "questionmark",
+        "image": "tv_on",
         "description" : "Hey Google, turn on the TV"
     },
     {
         "id" : 2,
         "name" : "Turn off TV",
-        "image": "questionmark",
+        "image": "tv_off",
         "description" : "Hey Google, turn off the TV"
     },
     {
         "id" : 3,
         "name" : "Watch Prime",
-        "image": "questionmark",
+        "image": "prime_video",
         "description" : "Hey Google, turn on Prime Video"
     },
     {
         "id" : 4,
         "name" : "Play music",
-        "image": "questionmark",
+        "image": "music",
         "description" : "Hey Google, play some music"
     },
     {
         "id" : 5,
         "name" : "Play podcast",
-        "image": "questionmark",
+        "image": "podcast",
         "description" : "Hey Google, turn on a podcast"
     },
     {
         "id" : 6,
         "name" : "Radio",
-        "image": "questionmark",
+        "image": "radio",
         "description" : "Hey Google, turn on the radio"
     },
     {
         "id" : 7,
         "name" : "Audiobook",
-        "image": "questionmark",
+        "image": "audiobook",
         "description" : "Hey Google, play an audiobook"
     },
     {
         "id" : 8,
         "name" : "News",
-        "image": "questionmark",
+        "image": "news",
         "description" : "Hey Google, tell me the news"
     },
     {
         "id" : 9,
         "name" : "Games",
-        "image": "questionmark",
+        "image": "game_controller",
         "description" : "Hey Google, play a game with me"
     }
     
