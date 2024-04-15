@@ -162,9 +162,9 @@ struct ActionView: View {
                 }
                 
                 Section {
-                    Button(action: addAction) {
-                        Text(self.action == nil ? "Submit" : "Save")
-                    }.disabled(name.isEmpty || prompt.isEmpty || image == nil)
+//                    Button(action: addAction) {
+//                        Text(self.action == nil ? "Submit" : "Save")
+//                    }.disabled(name.isEmpty || prompt.isEmpty || image == nil)
                     
                     if self.action == nil {
                         EmptyView();
@@ -196,6 +196,19 @@ struct ActionView: View {
                     sourceType: self.$sourceType
                 );
             })
+            .interactiveDismissDisabled()
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss();
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(self.action == nil ? "Submit" : "Save") {
+                        self.addAction();
+                    }
+                }
+            }
         }
     }
 }
