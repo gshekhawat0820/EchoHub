@@ -20,30 +20,52 @@ struct ActionIconView: View {
                         speaker.speak(action: action.prompt)
                     },
                     label: {
-                        Image(uiImage: UIImage(data: action.imageData!)!)
-                            .resizable()
-                            .frame(width: 90, height: 90)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                              .overlay {
-                                RoundedRectangle(cornerRadius: 20)
-                                  .stroke(.black, lineWidth: 3)
-                            }
+                        if isAdmin {
+                            Image(uiImage: UIImage(data: action.imageData!)!)
+                                .resizable()
+                                .frame(width: 90, height: 90)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                  .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                      .stroke(.black, lineWidth: 3)
+                                }
+                                .contextMenu {
+                                    Button {
+                                        showingSheet.toggle();
+                                    } label: {
+                                        Label("Edit", systemImage: "pencil")
+                                    }
+                                }
+                        }
+                        else {
+                            Image(uiImage: UIImage(data: action.imageData!)!)
+                                .resizable()
+                                .frame(width: 90, height: 90)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                  .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                      .stroke(.black, lineWidth: 3)
+                                }
+                        }
                     }
                 )
             }
-            if isAdmin {
-                Button(action.name) {
-                    showingSheet.toggle();
-                }
+//            if isAdmin {
+//                Text("\(action.name)")
+//                    .font(.title3)
+//                    .fontWeight(.semibold)
+//                    .multilineTextAlignment(.center)
+//            }
+//            else {
+//                Text("\(action.name)")
+//                    .font(.title3)
+//                    .fontWeight(.semibold)
+//                    .multilineTextAlignment(.center)
+//            }
+            Text("\(action.name)")
                 .font(.title3)
                 .fontWeight(.semibold)
-            }
-            else {
-                Text("\(action.name)")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-            }
+                .multilineTextAlignment(.center)
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {
