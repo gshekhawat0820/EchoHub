@@ -71,7 +71,7 @@ struct DeviceView: View {
                         else {
                             CategoryView(
                                 assistantName: self.assistantName,
-                                title: "Actions ⚡",
+                                title: "Talk 🗣️",
                                 actions: actions.filter({ $0.device == self.assistantName }),
                                 isHomeAssistant: self.isHomeAssistant,
                                 isAdmin: $isAdmin

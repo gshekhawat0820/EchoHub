@@ -26,7 +26,7 @@ struct ActionView: View {
     @State private var device: String = "";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
-    @State private var pictureBoardCategory: String = "Actions";
+    @State private var pictureBoardCategory: String = "Talk";
     
     @State private var isAlertShown: Bool = false;
 
