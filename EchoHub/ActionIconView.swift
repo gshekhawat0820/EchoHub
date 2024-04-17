@@ -11,6 +11,7 @@ struct ActionIconView: View {
     @Binding var isAdmin: Bool;
     @State private var showingSheet = false;
     let assistantName: String;
+    let isHomeAssistant: Bool;
     let action: Action;
     var body: some View {
         VStack(spacing: 6, content: {
@@ -69,7 +70,7 @@ struct ActionIconView: View {
         })
         .onChange(of: showingSheet) { }
         .sheet(isPresented: $showingSheet) {
-            ActionView(action: action, assistantName: self.assistantName);
+            ActionView(action: action, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant);
         }
     }
 }
