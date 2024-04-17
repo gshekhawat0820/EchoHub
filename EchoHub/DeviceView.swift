@@ -27,13 +27,19 @@ struct DeviceView: View {
                         CategoryView(
                             assistantName: self.assistantName,
                             title: "Favorites ⭐",
-                            actions: actions.filter({ $0.favorite == true && $0.device == self.assistantName }),
+                            actions: actions.filter({ $0.favorite == true && $0.device == self.assistantName })
+                                .sorted { a, b in
+                                    a.order.unsafelyUnwrapped < b.order.unsafelyUnwrapped
+                                },
                             isAdmin: $isAdmin
                         )
                         CategoryView(
                             assistantName: self.assistantName,
                             title: "Household 🏠",
-                            actions: actions.filter({ $0.category == "Household" && $0.device == self.assistantName }),
+                            actions: actions.filter({ $0.category == "Household" && $0.device == self.assistantName })
+                                .sorted { a, b in
+                                    a.order.unsafelyUnwrapped < b.order.unsafelyUnwrapped
+                                },
                             isAdmin: $isAdmin
                         )
                         CategoryView(

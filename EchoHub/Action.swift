@@ -17,6 +17,7 @@ class Action {
     var device: String;
     var hidden: Bool;
     var favorite: Bool;
+    var order: Int?;
     
     @Attribute(.externalStorage)
     var imageData: Data?;
@@ -29,5 +30,6 @@ class Action {
         self.hidden = hidden;
         self.favorite = favorite;
         self.imageData = image.pngData();
+        self.order = nil;
     }
 }
