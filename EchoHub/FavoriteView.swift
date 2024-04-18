@@ -1,42 +1,34 @@
 //
-//  CategoryView.swift
+//  FavoriteView.swift
 //  EchoHub
-//
-//  Created by Gaurav Shekhawat on 2/8/24.
 //
 
 import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
 
-struct CategoryView: View {
+struct FavoriteView: View {
     @Binding var isAdmin: Bool;
     var assistantName: String;
+    
+    @Query(sort: \Action.favoriteOrder) var actions: [Action];
 
-    var category: String;
-    var emoji: String;
-    
-    @Query(sort: \Action.order) var actions: [Action];
-    
     @State private var dragging: Action?;
 
-    init(assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>) {
+    init(assistantName: String, isAdmin: Binding<Bool>) {
         self._isAdmin = isAdmin;
         self.assistantName = assistantName;
 
-        self.category = category;
-        self.emoji = emoji;
-
         let admin = isAdmin.wrappedValue;
         self._actions = Query(
-            filter: #Predicate { $0.category == category && $0.device == assistantName && (!$0.hidden || admin) },
-            sort: \.order
+            filter: #Predicate { $0.favorite && $0.device == assistantName && (!$0.hidden || admin) },
+            sort: \.favoriteOrder
         );
     }
 
     var body: some View {
         HStack {
-            Text("\(category) \(emoji)")
+            Text("Favorites ⭐")
                 .font(.title)
                 .fontWeight(.heavy)
             Spacer()
@@ -57,7 +49,7 @@ struct CategoryView: View {
                             action: action,
                             listData: self.actions,
                             current: $dragging,
-                            favorite: false
+                            favorite: true
                         )
                     )
             }

@@ -9,9 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct DeviceView: View {
-    @Environment(\.modelContext) var context;
     @State private var isAdmin = false;
-    @Query let actions: [Action];
     
     let assistantName: String;
 
@@ -24,46 +22,35 @@ struct DeviceView: View {
                     .background(primaryColor)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(spacing: 0, content: {
+                        FavoriteView(assistantName: self.assistantName, isAdmin: $isAdmin)
                         CategoryView(
                             assistantName: self.assistantName,
-                            title: "Favorites ⭐",
-                            actions: actions.filter({ $0.favorite == true && $0.device == self.assistantName })
-                                .sorted { a, b in
-                                    a.order.unsafelyUnwrapped < b.order.unsafelyUnwrapped
-                                },
+                            category: "Household",
+                            emoji: "🏠",
                             isAdmin: $isAdmin
                         )
                         CategoryView(
                             assistantName: self.assistantName,
-                            title: "Household 🏠",
-                            actions: actions.filter({ $0.category == "Household" && $0.device == self.assistantName })
-                                .sorted { a, b in
-                                    a.order.unsafelyUnwrapped < b.order.unsafelyUnwrapped
-                                },
+                            category: "Entertainment",
+                            emoji: "🎥",
                             isAdmin: $isAdmin
                         )
                         CategoryView(
                             assistantName: self.assistantName,
-                            title: "Entertainment 🎥",
-                            actions: actions.filter({ $0.category == "Entertainment" && $0.device == self.assistantName }),
+                            category: "Communication",
+                            emoji: "📞",
                             isAdmin: $isAdmin
                         )
                         CategoryView(
                             assistantName: self.assistantName,
-                            title: "Communication 📞",
-                            actions: actions.filter({ $0.category == "Communication" && $0.device == self.assistantName }),
+                            category: "Routines",
+                            emoji: "⏰",
                             isAdmin: $isAdmin
                         )
                         CategoryView(
                             assistantName: self.assistantName,
-                            title: "Routines ⏰",
-                            actions: actions.filter({ $0.category == "Routines" && $0.device == self.assistantName }),
-                            isAdmin: $isAdmin
-                        )
-                        CategoryView(
-                            assistantName: self.assistantName,
-                            title: "Information & Chores 📋",
-                            actions: actions.filter({ $0.category == "Information & Chores" && $0.device == self.assistantName }),
+                            category: "Information & Chores",
+                            emoji: "📋",
                             isAdmin: $isAdmin
                         )
                     })
@@ -71,14 +58,6 @@ struct DeviceView: View {
             }
             .navigationBarBackButtonHidden(true)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        }
-    }
-    
-    func deleteAllData() {
-        do {
-            try context.delete(model: Action.self)
-        } catch {
-            print("Could not delete Actions")
         }
     }
 }

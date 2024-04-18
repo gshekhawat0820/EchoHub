@@ -17,12 +17,23 @@ class Action {
     var device: String;
     var hidden: Bool;
     var favorite: Bool;
-    var order: Int?;
+    var order: Int;
+    var favoriteOrder: Int;
     
     @Attribute(.externalStorage)
     var imageData: Data?;
     
-    init(name: String, prompt: String, category: String, device: String, hidden: Bool, favorite: Bool, image: UIImage) {
+    init(
+        name: String,
+        prompt: String,
+        category: String,
+        device: String,
+        hidden: Bool,
+        favorite: Bool,
+        image: UIImage, 
+        order: Int = Int.max,
+        favoriteOrder: Int? = nil
+    ) {
         self.name = name;
         self.prompt = prompt;
         self.category = category;
@@ -30,6 +41,11 @@ class Action {
         self.hidden = hidden;
         self.favorite = favorite;
         self.imageData = image.pngData();
-        self.order = nil;
+        self.order = order;
+        if (favoriteOrder == nil) {
+            self.favoriteOrder = order;
+        } else {
+            self.favoriteOrder = favoriteOrder!;
+        }
     }
 }
