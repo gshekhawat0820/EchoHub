@@ -10,14 +10,16 @@ import UniformTypeIdentifiers
 struct FavoriteView: View {
     @Binding var isAdmin: Bool;
     var assistantName: String;
+    let isHomeAssistant: Bool;
     
     @Query(sort: \Action.favoriteOrder) var actions: [Action];
 
     @State private var dragging: Action?;
 
-    init(assistantName: String, isAdmin: Binding<Bool>) {
+    init(assistantName: String, isAdmin: Binding<Bool>, isHomeAssistant: Bool) {
         self._isAdmin = isAdmin;
         self.assistantName = assistantName;
+        self.isHomeAssistant = isHomeAssistant;
 
         let admin = isAdmin.wrappedValue;
         self._actions = Query(
@@ -38,7 +40,12 @@ struct FavoriteView: View {
         .padding(.bottom, 10)
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(self.actions) { action in
-                ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, action: action)
+                ActionIconView(
+                    isAdmin: $isAdmin,
+                    assistantName: self.assistantName,
+                    isHomeAssistant: self.isHomeAssistant,
+                    action: action
+                )
                     .onDrag {
                         self.dragging = action;
                         return NSItemProvider(object: action.name as NSString)

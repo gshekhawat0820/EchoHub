@@ -11,21 +11,26 @@ import UniformTypeIdentifiers
 
 struct CategoryView: View {
     @Binding var isAdmin: Bool;
-    var assistantName: String;
+    let isHomeAssistant: Bool;
 
-    var category: String;
-    var emoji: String;
+    let assistantName: String;
+
+    let category: String;
+    let emoji: String;
     
-    @Query(sort: \Action.order) var actions: [Action];
+    @Query(sort: \Action.order) let actions: [Action];
     
     @State private var dragging: Action?;
 
-    init(assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>) {
+    init(isHomeAssistant: Bool, assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>) {
+        self.isHomeAssistant = isHomeAssistant;
         self._isAdmin = isAdmin;
         self.assistantName = assistantName;
 
         self.category = category;
         self.emoji = emoji;
+        
+        print("category", category, assistantName);
 
         let admin = isAdmin.wrappedValue;
         self._actions = Query(
@@ -46,7 +51,12 @@ struct CategoryView: View {
         .padding(.bottom, 10)
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(self.actions) { action in
-                ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, action: action)
+                ActionIconView(
+                    isAdmin: $isAdmin, 
+                    assistantName: self.assistantName,
+                    isHomeAssistant: self.isHomeAssistant,
+                    action: action
+                )
                     .onDrag {
                         self.dragging = action;
                         return NSItemProvider(object: action.name as NSString)

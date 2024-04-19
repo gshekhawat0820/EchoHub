@@ -12,47 +12,67 @@ struct DeviceView: View {
     @State private var isAdmin = false;
     
     let assistantName: String;
-
+    let isHomeAssistant: Bool;
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationBarView(isAdmin: $isAdmin, assistantName: self.assistantName)
+                NavigationBarView(isAdmin: $isAdmin, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
                     .frame(width: UIScreen.main.bounds.width)
                     .padding(.bottom, 15)
                     .background(primaryColor)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(spacing: 0, content: {
-                        FavoriteView(assistantName: self.assistantName, isAdmin: $isAdmin)
-                        CategoryView(
+                        FavoriteView(
                             assistantName: self.assistantName,
-                            category: "Household",
-                            emoji: "🏠",
-                            isAdmin: $isAdmin
+                            isAdmin: $isAdmin,
+                            isHomeAssistant: self.isHomeAssistant
                         )
-                        CategoryView(
-                            assistantName: self.assistantName,
-                            category: "Entertainment",
-                            emoji: "🎥",
-                            isAdmin: $isAdmin
-                        )
-                        CategoryView(
-                            assistantName: self.assistantName,
-                            category: "Communication",
-                            emoji: "📞",
-                            isAdmin: $isAdmin
-                        )
-                        CategoryView(
-                            assistantName: self.assistantName,
-                            category: "Routines",
-                            emoji: "⏰",
-                            isAdmin: $isAdmin
-                        )
-                        CategoryView(
-                            assistantName: self.assistantName,
-                            category: "Information & Chores",
-                            emoji: "📋",
-                            isAdmin: $isAdmin
-                        )
+
+                        if (!self.isHomeAssistant) {
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Talk",
+                                emoji: "🗣️",
+                                isAdmin: $isAdmin
+                            )
+                        } else  {
+                          CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Household",
+                                emoji: "🏠",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Entertainment",
+                                emoji: "🎥",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Communication",
+                                emoji: "📞",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Routines",
+                                emoji: "⏰",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Information & Chores",
+                                emoji: "📋",
+                                isAdmin: $isAdmin
+                            )
+                        }
                     })
                 })
             }

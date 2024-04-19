@@ -14,6 +14,7 @@ struct ActionView: View {
     
     let action: Action?;
     let assistantName: String;
+    let isHomeAssistant: Bool;
 
     @State private var showPicker = false;
     @State private var sourceType = UIImagePickerController.SourceType.camera;
@@ -25,15 +26,20 @@ struct ActionView: View {
     @State private var device: String = "";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
+    @State private var pictureBoardCategory: String = "Talk";
     
     @State private var isAlertShown: Bool = false;
 
     let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
     
-    init(action: Action?, assistantName: String) {
+    init(action: Action?, assistantName: String, isHomeAssistant: Bool) {
         self.assistantName = assistantName;
+        self.isHomeAssistant = isHomeAssistant;
         guard let action = action else {
             self.action = nil;
+            if (!isHomeAssistant) {
+                _category = .init(initialValue: self.pictureBoardCategory);
+            }
             _device = .init(initialValue: assistantName);
             return;
         }
@@ -79,7 +85,7 @@ struct ActionView: View {
             action.favorite = self.favorite;
             action.imageData = image.pngData();
         } else {
-            let category = self.category;
+            let category = self.isHomeAssistant ? self.category : self.pictureBoardCategory;
             let descriptor = FetchDescriptor<Action>(predicate: #Predicate { $0.category == category });
             let count = (try? modelContext.fetchCount(descriptor)) ?? Int.max;
 
@@ -93,7 +99,7 @@ struct ActionView: View {
             let action = Action(
                 name: self.name,
                 prompt: self.prompt,
-                category: self.category,
+                category: category,
                 device: self.device,
                 hidden: self.hidden,
                 favorite: self.favorite,
@@ -165,9 +171,18 @@ struct ActionView: View {
                 }
                 .environment(\.menuOrder, .fixed)
                 
-                Picker("Category", selection: self.$category) {
-                    ForEach(categories, id: \.self) {
-                        Text($0)
+                if self.isHomeAssistant {
+                    Picker("Category", selection: self.$category) {
+                        ForEach(categories, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                }
+                else {
+                    HStack {
+                        Text("Category")
+                        Spacer()
+                        Text(self.pictureBoardCategory).foregroundStyle(.gray)
                     }
                 }
                 
