@@ -37,6 +37,9 @@ struct ActionView: View {
         self.isHomeAssistant = isHomeAssistant;
         guard let action = action else {
             self.action = nil;
+            if (!isHomeAssistant) {
+                _category = .init(initialValue: self.pictureBoardCategory);
+            }
             _device = .init(initialValue: assistantName);
             return;
         }
@@ -65,20 +68,44 @@ struct ActionView: View {
         if let action {
             action.name = self.name;
             action.prompt = self.prompt;
+            if (self.category != action.category) {
+                let category = self.category;
+                let descriptor = FetchDescriptor<Action>(predicate: #Predicate { $0.category == category });
+                let count = (try? modelContext.fetchCount(descriptor)) ?? Int.max;
+                action.order = count;
+            }
             action.category = self.category;
             action.device = self.device;
             action.hidden = self.hidden;
+            if (self.favorite) {
+                let descriptor = FetchDescriptor<Action>(predicate: #Predicate { $0.favorite });
+                let count = (try? modelContext.fetchCount(descriptor)) ?? Int.max;
+                action.favoriteOrder = count;
+            }
             action.favorite = self.favorite;
             action.imageData = image.pngData();
         } else {
+            let category = self.isHomeAssistant ? self.category : self.pictureBoardCategory;
+            let descriptor = FetchDescriptor<Action>(predicate: #Predicate { $0.category == category });
+            let count = (try? modelContext.fetchCount(descriptor)) ?? Int.max;
+
+            var favoriteOrder: Int? = nil;
+            if (self.favorite) {
+                let descriptor = FetchDescriptor<Action>(predicate: #Predicate { $0.favorite });
+                let count = (try? modelContext.fetchCount(descriptor)) ?? Int.max;
+                favoriteOrder = count;
+            }
+
             let action = Action(
                 name: self.name,
                 prompt: self.prompt,
-                category: self.category,
+                category: category,
                 device: self.device,
                 hidden: self.hidden,
                 favorite: self.favorite,
-                image: image
+                image: image,
+                order: count,
+                favoriteOrder: favoriteOrder
             );
 
             modelContext.insert(action)

@@ -9,9 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct DeviceView: View {
-    @Environment(\.modelContext) var context;
     @State private var isAdmin = false;
-    @Query let actions: [Action];
     
     let assistantName: String;
     let isHomeAssistant: Bool;
@@ -24,56 +22,54 @@ struct DeviceView: View {
                     .background(primaryColor)
                 ScrollView(.vertical, showsIndicators: false, content: {
                     VStack(spacing: 0, content: {
-                        CategoryView(
+                        FavoriteView(
                             assistantName: self.assistantName,
-                            title: "Favorites ⭐",
-                            actions: actions.filter({ $0.favorite == true && $0.device == self.assistantName }),
-                            isHomeAssistant: self.isHomeAssistant, 
-                            isAdmin: $isAdmin
+                            isAdmin: $isAdmin,
+                            isHomeAssistant: self.isHomeAssistant
                         )
-                        if isHomeAssistant {
+
+                        if (!self.isHomeAssistant) {
                             CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Household 🏠",
-                                actions: actions.filter({ $0.category == "Household" && $0.device == self.assistantName }),
-                                isHomeAssistant: self.isHomeAssistant, 
-                                isAdmin: $isAdmin
-                            )
-                            CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Entertainment 🎥",
-                                actions: actions.filter({ $0.category == "Entertainment" && $0.device == self.assistantName }),
-                                isHomeAssistant: self.isHomeAssistant, 
-                                isAdmin: $isAdmin
-                            )
-                            CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Communication 📞",
-                                actions: actions.filter({ $0.category == "Communication" && $0.device == self.assistantName }),
-                                isHomeAssistant: self.isHomeAssistant, 
-                                isAdmin: $isAdmin
-                            )
-                            CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Routines ⏰",
-                                actions: actions.filter({ $0.category == "Routines" && $0.device == self.assistantName }),
                                 isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Talk",
+                                emoji: "🗣️",
+                                isAdmin: $isAdmin
+                            )
+                        } else  {
+                          CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Household",
+                                emoji: "🏠",
                                 isAdmin: $isAdmin
                             )
                             CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Information & Chores 📋",
-                                actions: actions.filter({ $0.category == "Information & Chores" && $0.device == self.assistantName }),
                                 isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Entertainment",
+                                emoji: "🎥",
                                 isAdmin: $isAdmin
                             )
-                        }
-                        else {
                             CategoryView(
-                                assistantName: self.assistantName,
-                                title: "Talk 🗣️",
-                                actions: actions.filter({ $0.device == self.assistantName }),
                                 isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Communication",
+                                emoji: "📞",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Routines",
+                                emoji: "⏰",
+                                isAdmin: $isAdmin
+                            )
+                            CategoryView(
+                                isHomeAssistant: self.isHomeAssistant,
+                                assistantName: self.assistantName,
+                                category: "Information & Chores",
+                                emoji: "📋",
                                 isAdmin: $isAdmin
                             )
                         }
@@ -82,14 +78,6 @@ struct DeviceView: View {
             }
             .navigationBarBackButtonHidden(true)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        }
-    }
-    
-    func deleteAllData() {
-        do {
-            try context.delete(model: Action.self)
-        } catch {
-            print("Could not delete Actions")
         }
     }
 }

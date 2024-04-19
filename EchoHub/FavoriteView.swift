@@ -1,47 +1,36 @@
 //
-//  CategoryView.swift
+//  FavoriteView.swift
 //  EchoHub
-//
-//  Created by Gaurav Shekhawat on 2/8/24.
 //
 
 import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
 
-struct CategoryView: View {
+struct FavoriteView: View {
     @Binding var isAdmin: Bool;
+    var assistantName: String;
     let isHomeAssistant: Bool;
-
-    let assistantName: String;
-
-    let category: String;
-    let emoji: String;
     
-    @Query(sort: \Action.order) let actions: [Action];
-    
+    @Query(sort: \Action.favoriteOrder) var actions: [Action];
+
     @State private var dragging: Action?;
 
-    init(isHomeAssistant: Bool, assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>) {
-        self.isHomeAssistant = isHomeAssistant;
+    init(assistantName: String, isAdmin: Binding<Bool>, isHomeAssistant: Bool) {
         self._isAdmin = isAdmin;
         self.assistantName = assistantName;
-
-        self.category = category;
-        self.emoji = emoji;
-        
-        print("category", category, assistantName);
+        self.isHomeAssistant = isHomeAssistant;
 
         let admin = isAdmin.wrappedValue;
         self._actions = Query(
-            filter: #Predicate { $0.category == category && $0.device == assistantName && (!$0.hidden || admin) },
-            sort: \.order
+            filter: #Predicate { $0.favorite && $0.device == assistantName && (!$0.hidden || admin) },
+            sort: \.favoriteOrder
         );
     }
 
     var body: some View {
         HStack {
-            Text("\(category) \(emoji)")
+            Text("Favorites ⭐")
                 .font(.title)
                 .fontWeight(.heavy)
             Spacer()
@@ -52,7 +41,7 @@ struct CategoryView: View {
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(self.actions) { action in
                 ActionIconView(
-                    isAdmin: $isAdmin, 
+                    isAdmin: $isAdmin,
                     assistantName: self.assistantName,
                     isHomeAssistant: self.isHomeAssistant,
                     action: action
@@ -67,7 +56,7 @@ struct CategoryView: View {
                             action: action,
                             listData: self.actions,
                             current: $dragging,
-                            favorite: false
+                            favorite: true
                         )
                     )
             }

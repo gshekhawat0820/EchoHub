@@ -37,6 +37,7 @@ struct ActionIconView: View {
                                         Label("Edit", systemImage: "pencil")
                                     }
                                 }
+                                .draggable(action.imageData!)
                         }
                         else {
                             Image(uiImage: UIImage(data: action.imageData!)!)
