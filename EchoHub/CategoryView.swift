@@ -12,6 +12,7 @@ struct CategoryView: View {
     
     var title: String
     var actions: [Action]
+    let isHomeAssistant: Bool;
     @Binding var isAdmin: Bool
     
     var body: some View {
@@ -28,7 +29,7 @@ struct CategoryView: View {
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(actions) { action in
                 if (isAdmin || !action.hidden) {
-                    ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, action: action)
+                    ActionIconView(isAdmin: $isAdmin, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant, action: action)
                 }
             }
         })
@@ -36,8 +37,8 @@ struct CategoryView: View {
     }
 }
 
-#Preview {
-    CategoryView(assistantName: "Amazon Alexa", title: "Household", actions: [], isAdmin: .constant(false))
-        .previewLayout(.sizeThatFits)
-        
-}
+//#Preview {
+//    CategoryView(assistantName: "Amazon Alexa", title: "Household", actions: [], isAdmin: .constant(false))
+//        .previewLayout(.sizeThatFits)
+//        
+//}

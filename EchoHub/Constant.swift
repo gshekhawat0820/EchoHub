@@ -25,6 +25,9 @@ let GoCommunicationIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/go
 let GoInfoChoresIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleInfo_chores.json")
 let GoRoutinesIcons: [ActionJson] = Bundle.main.decode("Data/Google Data/googleRoutines.json")
 
+// Picture Board DATA
+let PictureBoardIcons: [ActionJson] = []
+
 // LAYOUT
 let primaryColor = Color(red: 0, green: 90/255, blue: 168/255)
 let columnSpacing: CGFloat = 10

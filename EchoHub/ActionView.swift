@@ -14,6 +14,7 @@ struct ActionView: View {
     
     let action: Action?;
     let assistantName: String;
+    let isHomeAssistant: Bool;
 
     @State private var showPicker = false;
     @State private var sourceType = UIImagePickerController.SourceType.camera;
@@ -25,13 +26,15 @@ struct ActionView: View {
     @State private var device: String = "";
     @State private var hidden: Bool = false;
     @State private var favorite: Bool = false;
+    @State private var pictureBoardCategory: String = "Talk";
     
     @State private var isAlertShown: Bool = false;
 
     let categories = ["Household", "Entertainment", "Communication", "Routines", "Information & Chores"];
     
-    init(action: Action?, assistantName: String) {
+    init(action: Action?, assistantName: String, isHomeAssistant: Bool) {
         self.assistantName = assistantName;
+        self.isHomeAssistant = isHomeAssistant;
         guard let action = action else {
             self.action = nil;
             _device = .init(initialValue: assistantName);
@@ -141,9 +144,18 @@ struct ActionView: View {
                 }
                 .environment(\.menuOrder, .fixed)
                 
-                Picker("Category", selection: self.$category) {
-                    ForEach(categories, id: \.self) {
-                        Text($0)
+                if self.isHomeAssistant {
+                    Picker("Category", selection: self.$category) {
+                        ForEach(categories, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                }
+                else {
+                    HStack {
+                        Text("Category")
+                        Spacer()
+                        Text(self.pictureBoardCategory).foregroundStyle(.gray)
                     }
                 }
                 

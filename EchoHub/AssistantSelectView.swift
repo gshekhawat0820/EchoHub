@@ -42,17 +42,16 @@ struct AssistantSelectView: View {
                         .resizable()
                         .foregroundColor(.white)
                         .frame(width: 115, height: 100)
-                    Spacer().frame(height: 0)
-                    Text("Please select your assistant: ")
+                    Text("Please select an option below: ")
                         .foregroundStyle(Color.white)
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Amazon Alexa")
+                        DeviceView(assistantName: "Amazon Alexa", isHomeAssistant: true)
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
-                            .font(.system(size: 30))
+                            .font(.system(size: 25))
                             .fontWeight(.semibold)
                             .padding()
                             .overlay(
@@ -61,11 +60,24 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Google Home")
+                        DeviceView(assistantName: "Google Home", isHomeAssistant: true)
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
-                            .font(.system(size: 30))
+                            .font(.system(size: 25))
+                            .fontWeight(.semibold)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.white, lineWidth: 2)
+                            )
+                    });
+                    NavigationLink(destination: {
+                        DeviceView(assistantName: "Picture Board", isHomeAssistant: false)
+                    }, label: {
+                        Text("Picture Board")
+                            .foregroundStyle(Color.white)
+                            .font(.system(size: 25))
                             .fontWeight(.semibold)
                             .padding()
                             .overlay(

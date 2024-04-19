@@ -14,6 +14,7 @@ struct NavigationBarView: View {
     @State private var showPasscode = false;
 
     let assistantName: String;
+    let isHomeAssistant: Bool;
     var body: some View {
         HStack {
             Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
@@ -55,7 +56,7 @@ struct NavigationBarView: View {
         }
         .background(primaryColor)
         .sheet(isPresented: $showingSheet) {
-            ActionView(action: nil, assistantName: self.assistantName)
+            ActionView(action: nil, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
         }
         .sheet(isPresented: $showPasscode) {
             PasscodeView(isAdmin: $isAdmin)
@@ -63,8 +64,8 @@ struct NavigationBarView: View {
     }
 }
 
-#Preview {
-    NavigationBarView(isAdmin: .constant(false), assistantName: "Amazon Alexa")
-        .previewLayout(.sizeThatFits)
-        .padding()
-}
+//#Preview {
+//    NavigationBarView(isAdmin: .constant(false), assistantName: "Amazon Alexa")
+//        .previewLayout(.sizeThatFits)
+//        .padding()
+//}
