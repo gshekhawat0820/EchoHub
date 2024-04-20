@@ -10,7 +10,8 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
-    @State private var showingSheet = false;
+    @State private var showingTutorialSheet = false;
+    @State private var showingSettingsSheet = false;
     @Binding var passwordExists: Bool;
   
     var body: some View {
@@ -18,11 +19,23 @@ struct AssistantSelectView: View {
             ZStack {
                 primaryColor.ignoresSafeArea()
                 HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Button(
+                            action: {
+                                showingTutorialSheet.toggle();
+                            }
+                        ) {
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundStyle(.white)
+                                .padding()
+                        }
+                        Spacer()
+                    }
                     Spacer()
                     VStack(alignment: .leading) {
                         Button(
                             action: {
-                                showingSheet.toggle();
+                                showingSettingsSheet.toggle();
                             }
                         ) {
                             Image(systemName: "gearshape.fill")
@@ -93,8 +106,10 @@ struct AssistantSelectView: View {
                         Text("Reset Password").foregroundStyle(.white)
                     })
                 }
-            }.sheet(isPresented: $showingSheet) {
+            }.sheet(isPresented: $showingSettingsSheet) {
                 SettingsView()
+            }.sheet(isPresented: $showingTutorialSheet) {
+                TutorialView()
             }
         }
     }
