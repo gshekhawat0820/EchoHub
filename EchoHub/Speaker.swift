@@ -56,11 +56,7 @@ class Speaker {
         let utterance = AVSpeechUtterance(string: action);
         utterance.voice = AVSpeechSynthesisVoice(language: langCode);
         utterance.rate = 0.5;
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-        } catch {
-            print("Error playing sound")
-        }
+
         self.synthesizer.speak(utterance);
     }
 
@@ -69,7 +65,21 @@ class Speaker {
         voice: (AWSPollyVoiceId, AWSPollyLanguageCode)? = nil
     ) {
         let input = AWSPollySynthesizeSpeechURLBuilderRequest();
-        input.text = action;
+        
+        if action.hasPrefix("Alexa,") {
+            let prefix = "Alexa,"
+            let modifiedAction = "<speak>\(prefix) <break time='2s'/>\(String(action.dropFirst(prefix.count)))</speak>"
+            input.textType = .ssml
+            input.text = modifiedAction
+        } else if action.hasPrefix("Hey Google,") {
+            let prefix = "Hey Google,"
+            let modifiedAction = "<speak>\(prefix) <break time='2s'/>\(String(action.dropFirst(prefix.count)))</speak>"
+            input.textType = .ssml
+            input.text = modifiedAction
+        } else {
+            input.text = action
+        }
+        
         input.outputFormat = AWSPollyOutputFormat.mp3;
         
         if let voice = voice {
