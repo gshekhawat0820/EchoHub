@@ -10,8 +10,10 @@ import SwiftUI
 struct NavigationBarView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
     @Binding var isAdmin: Bool;
+    @Binding var passwordExists: Bool;
     @State private var showingSheet = false;
     @State private var showPasscode = false;
+    var reset = false;
 
     let assistantName: String;
     let isHomeAssistant: Bool;
@@ -59,7 +61,7 @@ struct NavigationBarView: View {
             ActionView(action: nil, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
         }
         .sheet(isPresented: $showPasscode) {
-            PasscodeView(isAdmin: $isAdmin)
+            PasscodeView(isAdmin: $isAdmin, passwordExists: $passwordExists, reset: false)
         }
     }
 }

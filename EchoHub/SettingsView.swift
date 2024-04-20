@@ -11,6 +11,8 @@ import AWSPolly
 struct SettingsView: View {
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
+    @State private var showPasswordReset = false;
+    @Binding var passwordExists: Bool;
 
     var body: some View {
         NavigationView {
@@ -48,11 +50,21 @@ struct SettingsView: View {
                     }
                     .id(selectedLanguage)
                 }
+                HStack {
+                    Button(action: {
+                        showPasswordReset.toggle()
+                    }, label: {
+                        Text("Reset Password")
+                    })
+                }
             }.navigationTitle("Settings")
+        }
+        .sheet(isPresented: $showPasswordReset) {
+            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, reset: true)
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(passwordExists: .constant(false))
 }

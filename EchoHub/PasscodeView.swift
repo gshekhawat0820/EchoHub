@@ -10,9 +10,11 @@ import SwiftUI
 struct PasscodeView: View {
     @State private var passcode = ""
     @Binding var isAdmin: Bool
+    @Binding var passwordExists: Bool
     @State private var showPassCodeError = false;
     @State private var shake = false;
     @Environment(\.dismiss) private var dismiss;
+    var reset: Bool
     
     var body: some View {
         VStack(spacing: 48) {
@@ -21,10 +23,18 @@ struct PasscodeView: View {
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundStyle(.white)
-                Text("Please enter your 4-digit pin to access administrative mode.")
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.white)
+                if !reset {
+                    Text("Please enter your 4-digit pin to access administrative mode.")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                }
+                else {
+                    Text("Please enter your current 4-digit pin to reset your password.")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                }
             }
             .padding(.top, 90)
             
@@ -59,11 +69,15 @@ struct PasscodeView: View {
         Task {
             try? await Task.sleep(nanoseconds: 125_000_000)
             isAdmin = passcode == KeychainManager.getPassword()
-            showPassCodeError = !isAdmin
-            passcode = ""
-            if isAdmin {
+            showPassCodeError = passcode != KeychainManager.getPassword()
+            if passcode == KeychainManager.getPassword() {
+                if reset {
+                    KeychainManager.deletePassword()
+                    passwordExists = false
+                }
                 dismiss()
             }
+            passcode = ""
             shake.toggle()
         }
     }
@@ -84,5 +98,5 @@ struct ShakeEffect: GeometryEffect {
 }
 
 #Preview {
-    PasscodeView(isAdmin: .constant(false))
+    PasscodeView(isAdmin: .constant(false), passwordExists: .constant(false), reset: false)
 }
