@@ -56,7 +56,11 @@ class Speaker {
         let utterance = AVSpeechUtterance(string: action);
         utterance.voice = AVSpeechSynthesisVoice(language: langCode);
         utterance.rate = 0.5;
-
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Error playing sound")
+        }
         self.synthesizer.speak(utterance);
     }
 
