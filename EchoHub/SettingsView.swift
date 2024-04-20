@@ -9,6 +9,7 @@ import SwiftUI
 import AWSPolly
 
 struct SettingsView: View {
+    @Binding var confirm: Bool;
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
 
@@ -48,11 +49,12 @@ struct SettingsView: View {
                     }
                     .id(selectedLanguage)
                 }
+                Toggle("Confirmation Popup", isOn: $confirm)
             }.navigationTitle("Settings")
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(confirm: .constant(true))
 }

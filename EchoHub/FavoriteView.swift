@@ -9,6 +9,7 @@ import UniformTypeIdentifiers
 
 struct FavoriteView: View {
     @Binding var isAdmin: Bool;
+    @Binding var confirm: Bool;
     var assistantName: String;
     let isHomeAssistant: Bool;
     
@@ -16,8 +17,9 @@ struct FavoriteView: View {
 
     @State private var dragging: Action?;
 
-    init(assistantName: String, isAdmin: Binding<Bool>, isHomeAssistant: Bool) {
+    init(assistantName: String, isAdmin: Binding<Bool>, confirm: Binding<Bool>, isHomeAssistant: Bool) {
         self._isAdmin = isAdmin;
+        self._confirm = confirm;
         self.assistantName = assistantName;
         self.isHomeAssistant = isHomeAssistant;
 
@@ -42,6 +44,7 @@ struct FavoriteView: View {
             ForEach(self.actions) { action in
                 ActionIconView(
                     isAdmin: $isAdmin,
+                    confirm: $confirm,
                     assistantName: self.assistantName,
                     isHomeAssistant: self.isHomeAssistant,
                     action: action

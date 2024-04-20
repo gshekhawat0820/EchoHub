@@ -13,6 +13,7 @@ struct AssistantSelectView: View {
     @State private var showingTutorialSheet = false;
     @State private var showingSettingsSheet = false;
     @Binding var passwordExists: Bool;
+    @Binding var confirm: Bool;
   
     var body: some View {
         NavigationStack {
@@ -60,7 +61,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Amazon Alexa", isHomeAssistant: true)
+                        DeviceView(confirm: $confirm, assistantName: "Amazon Alexa", isHomeAssistant: true)
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -73,7 +74,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Google Home", isHomeAssistant: true)
+                        DeviceView(confirm: $confirm, assistantName: "Google Home", isHomeAssistant: true)
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -86,7 +87,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Picture Board", isHomeAssistant: false)
+                        DeviceView(confirm: $confirm, assistantName: "Picture Board", isHomeAssistant: false)
                     }, label: {
                         Text("Picture Board")
                             .foregroundStyle(Color.white)
@@ -107,7 +108,7 @@ struct AssistantSelectView: View {
                     })
                 }
             }.sheet(isPresented: $showingSettingsSheet) {
-                SettingsView()
+                SettingsView(confirm: $confirm)
             }.sheet(isPresented: $showingTutorialSheet) {
                 TutorialView()
             }
@@ -121,5 +122,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView(passwordExists: .constant(true));
+    AssistantSelectView(passwordExists: .constant(true), confirm: .constant(true));
 }

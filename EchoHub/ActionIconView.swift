@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ActionIconView: View {
     @Binding var isAdmin: Bool;
+    @Binding var confirm: Bool;
     @State private var showingSheet = false;
+    @State private var showingConfirmation = false
     let assistantName: String;
     let isHomeAssistant: Bool;
     let action: Action;
@@ -18,7 +20,11 @@ struct ActionIconView: View {
             ZStack {
                 Button(
                     action: {
-                        speaker.speak(action: action.prompt)
+                        if confirm {
+                            showingConfirmation.toggle()
+                                            } else {
+                                                speaker.speak(action: action.prompt)
+                                            }
                     },
                     label: {
                         if isAdmin {
@@ -73,5 +79,14 @@ struct ActionIconView: View {
         .sheet(isPresented: $showingSheet) {
             ActionView(action: action, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant);
         }
+        .alert(isPresented: $showingConfirmation) {
+                    Alert(
+                        title: Text("Are you sure you want to perform this action?"),
+                        primaryButton: .default(Text("Yes")) {
+                            speaker.speak(action: action.prompt)
+                        },
+                        secondaryButton: .cancel(Text("No"))
+                    )
+                }
     }
 }
