@@ -16,7 +16,7 @@ class Speaker {
     
     init() {
         player.actionAtItemEnd = .pause;
-
+        
         AVSpeechSynthesisVoice.speechVoices();
         
         NotificationCenter.default.addObserver(
@@ -33,7 +33,7 @@ class Speaker {
             self?.player.advanceToNextItem()
             self?.player.play();
         }
-     }
+    }
     
     func getStringLanguageCode(voiceId: AWSPollyVoiceId) -> String {
         switch voiceId {
@@ -56,14 +56,21 @@ class Speaker {
         let utterance = AVSpeechUtterance(string: action);
         utterance.voice = AVSpeechSynthesisVoice(language: langCode);
         utterance.rate = 0.5;
-
+        
         self.synthesizer.speak(utterance);
     }
-
+    
     func speak(
         action: String,
         voice: (AWSPollyVoiceId, AWSPollyLanguageCode)? = nil
     ) {
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Error playing sound")
+        }
+        
         let input = AWSPollySynthesizeSpeechURLBuilderRequest();
         
         if action.hasPrefix("Alexa,") {
@@ -81,6 +88,7 @@ class Speaker {
         }
         
         input.outputFormat = AWSPollyOutputFormat.mp3;
+        
         
         if let voice = voice {
             input.voiceId = voice.0;
@@ -126,10 +134,10 @@ class Speaker {
             self.player.play();
             return;
         }
-
+        
         // TODO: if not connected to internet, fall back to https://developer.apple.com/documentation/avfaudio/avspeechsynthesisvoice
         let builder = AWSPollySynthesizeSpeechURLBuilder.default().getPreSignedURL(input);
-
+        
         // TODO: if the URL errors, then fall back to default voice...
         builder.continueOnSuccessWith { (awsTask: AWSTask<NSURL>) -> Any? in
             if let error = awsTask.error {
@@ -145,7 +153,7 @@ class Speaker {
                 self.useAppleSynthesizer(action: action, langCode: langCode);
                 return nil;
             }
-
+            
             // The result of getPresignedURL task is NSURL.
             if let url = awsTask.result {
                 // Try playing the data using the system AVAudioPlayer
