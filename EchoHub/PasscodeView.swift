@@ -141,6 +141,8 @@ struct PasscodeView: View {
                     if resetEmail {
                         KeychainManager.deleteEmail()
                         emailExists = false
+                        KeychainManager.deletePassword()
+                        passwordExists = false
                     }
                     else {
                         dismiss()
