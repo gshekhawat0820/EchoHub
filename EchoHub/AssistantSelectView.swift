@@ -13,8 +13,8 @@ struct AssistantSelectView: View {
     @State private var showingTutorialSheet = false;
     @State private var showingSettingsSheet = false;
     @Binding var passwordExists: Bool;
+    @Binding var emailExists: Bool;
     @Binding var confirm: Bool;
-  
     var body: some View {
         NavigationStack {
             ZStack {
@@ -61,7 +61,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(confirm: $confirm, assistantName: "Amazon Alexa", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Amazon Alexa", isHomeAssistant: true)
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -74,7 +74,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(confirm: $confirm, assistantName: "Google Home", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Google Home", isHomeAssistant: true)
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -87,7 +87,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(confirm: $confirm, assistantName: "Picture Board", isHomeAssistant: false)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Picture Board", isHomeAssistant: false)
                     }, label: {
                         Text("Picture Board")
                             .foregroundStyle(Color.white)
@@ -99,16 +99,9 @@ struct AssistantSelectView: View {
                                     .stroke(.white, lineWidth: 2)
                             )
                     });
-                    
-                    Button(action: {
-                        KeychainManager.deletePassword()
-                        passwordExists = false
-                    }, label: {
-                        Text("Reset Password").foregroundStyle(.white)
-                    })
                 }
             }.sheet(isPresented: $showingSettingsSheet) {
-                SettingsView(confirm: $confirm)
+                SettingsView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm)
             }.sheet(isPresented: $showingTutorialSheet) {
                 TutorialView()
             }
@@ -122,5 +115,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView(passwordExists: .constant(true), confirm: .constant(true));
+    AssistantSelectView(passwordExists: .constant(true), emailExists: .constant((true)), confirm: .constant(true));
 }

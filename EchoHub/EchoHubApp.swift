@@ -19,14 +19,20 @@ struct EchoHubApp: App {
     }
 
     @State private var passwordExists = KeychainManager.getPassword() != nil;
+    @State private var emailExists = KeychainManager.getEmail() != nil;
     @State private var confirm = false;
-  
+                
     var body: some Scene {
         WindowGroup {
-            if !passwordExists {
-                SetPasswordView(passwordExists: $passwordExists)
-            } else {
-                AssistantSelectView(passwordExists: $passwordExists, confirm: $confirm)
+            if emailExists {
+                if !passwordExists {
+                    SetPasswordView(passwordExists: $passwordExists)
+                } else {
+                    AssistantSelectView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm)
+                }
+            }
+            else {
+                SetEmailView(emailExists: $emailExists)
             }
         }
         .modelContainer(sharedModelContainer)
@@ -85,11 +91,10 @@ class KeychainManager {
             throw KeychainError.unknown(status)
         }
         
-        print("successfully deleted password")
     }
     
     static func getPassword() -> String? {
-        guard let data = KeychainManager.get(service: "EchoHub", account: "user") else {
+        guard let data = KeychainManager.get(service: "password", account: "EchoHub") else {
             return nil
         }
         let password = String(decoding: data, as: UTF8.self)
@@ -98,7 +103,7 @@ class KeychainManager {
     
     static func savePassword(password: String) {
         do {
-            try KeychainManager.save(service: "EchoHub", account: "user", password: password.data(using: .utf8) ?? Data())
+            try KeychainManager.save(service: "password", account: "EchoHub", password: password.data(using: .utf8) ?? Data())
         } catch {
             print(error)
         }
@@ -106,10 +111,36 @@ class KeychainManager {
     
     static func deletePassword() {
         do {
-            try KeychainManager.delete(service: "EchoHub", account: "user")
+            try KeychainManager.delete(service: "password", account: "EchoHub")
         } catch {
             print(error)
         }
+        print("successfully deleted password")
+    }
+    
+    static func getEmail() -> String? {
+        guard let data = KeychainManager.get(service: "email", account: "EchoHub") else {
+            return nil
+        }
+        let password = String(decoding: data, as: UTF8.self)
+        return password
+    }
+    
+    static func saveEmail(email: String) {
+        do {
+            try KeychainManager.save(service: "email", account: "EchoHub", password: email.data(using: .utf8) ?? Data())
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func deleteEmail() {
+        do {
+            try KeychainManager.delete(service: "email", account: "EchoHub")
+        } catch {
+            print(error)
+        }
+        print("successfully deleted email")
     }
 }
 
