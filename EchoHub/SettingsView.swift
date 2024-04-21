@@ -14,7 +14,9 @@ struct SettingsView: View {
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
     @State private var showPasswordReset = false;
+    @State private var showEmailReset = false;
     @Binding var passwordExists: Bool;
+    @Binding var emailExists: Bool;
     var body: some View {
         NavigationView {
             Form {
@@ -53,6 +55,13 @@ struct SettingsView: View {
                 }
                 HStack {
                     Button(action: {
+                        showEmailReset.toggle()
+                    }, label: {
+                        Text("Reset Email")
+                    })
+                }
+                HStack {
+                    Button(action: {
                         showPasswordReset.toggle()
                     }, label: {
                         Text("Reset Password")
@@ -68,11 +77,14 @@ struct SettingsView: View {
             }.navigationTitle("Settings")
         }
         .sheet(isPresented: $showPasswordReset) {
-            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, reset: true)
+            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, emailExists: $emailExists, resetEmail: false, resetPassword: true)
+        }
+        .sheet(isPresented: $showEmailReset) {
+            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, emailExists: $emailExists, resetEmail: true, resetPassword: false)
         }
     }
 }
 
 #Preview {
-    SettingsView(passwordExists: .constant(false))
+    SettingsView(passwordExists: .constant(false), emailExists: .constant(true))
 }

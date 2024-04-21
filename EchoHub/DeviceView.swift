@@ -11,12 +11,13 @@ import SwiftData
 struct DeviceView: View {
     @State private var isAdmin = false;
     @Binding var passwordExists: Bool;
+    @Binding var emailExists: Bool;
     let assistantName: String;
     let isHomeAssistant: Bool;
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationBarView(isAdmin: $isAdmin, passwordExists: $passwordExists, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
+                NavigationBarView(isAdmin: $isAdmin, passwordExists: $passwordExists, emailExists: $emailExists, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
                     .frame(width: UIScreen.main.bounds.width)
                     .padding(.bottom, 15)
                     .background(primaryColor)

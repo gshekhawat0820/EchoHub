@@ -21,6 +21,8 @@
 		260B06462B795DA200BD06D6 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 260B063A2B795DA200BD06D6 /* Preview Content */; };
 		260B06482B795DA200BD06D6 /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B063C2B795DA200BD06D6 /* CodableBundleExtension.swift */; };
 		2614C6FE2BD430FC00AAA5DA /* FeedbackEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */; };
+		26D6A5502BD554EF002B11E5 /* SetEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6A54F2BD554EF002B11E5 /* SetEmailView.swift */; };
+		26D6A5522BD55835002B11E5 /* SetEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6A5512BD55835002B11E5 /* SetEmailViewModel.swift */; };
 		26D741272B71798200F93014 /* EchoHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741262B71798200F93014 /* EchoHubApp.swift */; };
 		26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741282B71798200F93014 /* AssistantSelectView.swift */; };
 		26D7412D2B71798400F93014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412C2B71798400F93014 /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		260B063A2B795DA200BD06D6 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		260B063C2B795DA200BD06D6 /* CodableBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
 		2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEmail.swift; sourceTree = "<group>"; };
+		26D6A54F2BD554EF002B11E5 /* SetEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailView.swift; sourceTree = "<group>"; };
+		26D6A5512BD55835002B11E5 /* SetEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailViewModel.swift; sourceTree = "<group>"; };
 		26D741232B71798200F93014 /* EchoHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D741262B71798200F93014 /* EchoHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoHubApp.swift; sourceTree = "<group>"; };
 		26D741282B71798200F93014 /* AssistantSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSelectView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				26D741282B71798200F93014 /* AssistantSelectView.swift */,
 				260690712BACAD6300F71F12 /* SetPasswordView.swift */,
 				B26B8F482B744BC4000843B9 /* ActionView.swift */,
+				26D6A54F2BD554EF002B11E5 /* SetEmailView.swift */,
+				26D6A5512BD55835002B11E5 /* SetEmailViewModel.swift */,
 				B26B8F4C2B745783000843B9 /* ImagePickerView.swift */,
 				B23404AD2BB39C6900EB9693 /* DeviceView.swift */,
 				B216EB7D2BAB4E9000B47037 /* SettingsView.swift */,
@@ -291,11 +297,13 @@
 				B252C69F2BD1DBD1006AFEC6 /* DropRelocateDelegate.swift in Sources */,
 				B23404B22BB39C9F00EB9693 /* CategoryView.swift in Sources */,
 				26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */,
+				26D6A5502BD554EF002B11E5 /* SetEmailView.swift in Sources */,
 				260690702BA9D25500F71F12 /* PasscodeIndicatorView.swift in Sources */,
 				120435592B7966290054CB12 /* Speaker.swift in Sources */,
 				B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */,
 				26D741272B71798200F93014 /* EchoHubApp.swift in Sources */,
 				B23404AE2BB39C6900EB9693 /* DeviceView.swift in Sources */,
+				26D6A5522BD55835002B11E5 /* SetEmailViewModel.swift in Sources */,
 				B252C69D2BD1DB55006AFEC6 /* FavoriteView.swift in Sources */,
 				B2034E4D2B76808400DFF681 /* Action.swift in Sources */,
 				2606906E2BA9D24800F71F12 /* NumberPadView.swift in Sources */,

@@ -12,12 +12,14 @@ struct PasscodeView: View {
     @State private var passcode = ""
     @Binding var isAdmin: Bool
     @Binding var passwordExists: Bool
+    @Binding var emailExists: Bool
     @State private var showPassCodeError = false;
     @State private var shake = false;
     @State private var forgotPressed = false;
     @State private var number = "0000"
     @Environment(\.dismiss) private var dismiss;
-    var reset: Bool
+    var resetEmail: Bool
+    var resetPassword: Bool
     
     var body: some View {
         VStack(spacing: 48) {
@@ -26,25 +28,37 @@ struct PasscodeView: View {
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundStyle(.white)
-                if !reset {
-                    Text("Please enter your 4-digit pin to access administrative mode.")
-                        .font(.subheadline)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.white)
-                }
-                else {
+                if resetPassword {
                     if !forgotPressed {
                         Text("Please enter your current 4-digit pin to reset your password.")
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.white)
+                            .padding(.leading)
+                            .padding(.trailing)
                     }
                     else {
-                        Text("Please enter the random 4-digit pin we just sent to your email.")
+                        Text("Please enter the random 4-digit pin we just sent to \(KeychainManager.getEmail()!).")
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.white)
+                            .padding(.leading)
+                            .padding(.trailing)
                     }
+                }
+                else if resetEmail {
+                    Text("Please enter your current 4-digit pin to reset your email from \(KeychainManager.getEmail() ?? "<empty>").")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                        .padding(.leading)
+                        .padding(.trailing)
+                }
+                else {
+                    Text("Please enter your 4-digit pin to access administrative mode.")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
                 }
             }
             .padding(.top, 90)
@@ -61,12 +75,12 @@ struct PasscodeView: View {
                     .animation(.linear, value: shake)
             }
             
-            if reset && !forgotPressed {
+            if resetPassword && !forgotPressed {
                 Button {
                     number = String(Int.random(in: 1000 ... 9999))
                     let session = Session()
                     session.authentication = Authentication.apiKey(sendGridAPIKey!)
-                    let personalization = Personalization(recipients: "gauravshekhawat99@gmail.com")
+                    let personalization = Personalization(recipients: KeychainManager.getEmail()!)
                     let plainText = Content(contentType: ContentType.plainText, value: "Your random 4-digit pin required to create a new passcode is: \(number).")
                     let email = Email(
                         personalizations: [personalization],
@@ -108,7 +122,7 @@ struct PasscodeView: View {
             try? await Task.sleep(nanoseconds: 125_000_000)
             isAdmin = passcode == KeychainManager.getPassword()
             showPassCodeError = forgotPressed ? passcode != number : passcode != KeychainManager.getPassword()
-            if reset {
+            if resetPassword {
                 if forgotPressed {
                     if passcode == number {
                         KeychainManager.deletePassword()
@@ -124,7 +138,13 @@ struct PasscodeView: View {
             }
             else {
                 if passcode == KeychainManager.getPassword() {
-                    dismiss()
+                    if resetEmail {
+                        KeychainManager.deleteEmail()
+                        emailExists = false
+                    }
+                    else {
+                        dismiss()
+                    }
                 }
             }
             passcode = ""
@@ -148,5 +168,5 @@ struct ShakeEffect: GeometryEffect {
 }
 
 #Preview {
-    PasscodeView(isAdmin: .constant(false), passwordExists: .constant(false), reset: true)
+    PasscodeView(isAdmin: .constant(false), passwordExists: .constant(false), emailExists: .constant(true), resetEmail: true, resetPassword: false)
 }

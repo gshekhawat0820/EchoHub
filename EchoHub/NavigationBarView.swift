@@ -11,6 +11,7 @@ struct NavigationBarView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>;
     @Binding var isAdmin: Bool;
     @Binding var passwordExists: Bool;
+    @Binding var emailExists: Bool;
     @State private var showingSheet = false;
     @State private var showPasscode = false;
     var reset = false;
@@ -61,7 +62,7 @@ struct NavigationBarView: View {
             ActionView(action: nil, assistantName: self.assistantName, isHomeAssistant: self.isHomeAssistant)
         }
         .sheet(isPresented: $showPasscode) {
-            PasscodeView(isAdmin: $isAdmin, passwordExists: $passwordExists, reset: false)
+            PasscodeView(isAdmin: $isAdmin, passwordExists: $passwordExists, emailExists: $emailExists, resetEmail: false, resetPassword: false)
         }
     }
 }
