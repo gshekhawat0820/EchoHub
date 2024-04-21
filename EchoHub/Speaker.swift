@@ -29,7 +29,7 @@ class Speaker {
     }
     
     func advance() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.player.advanceToNextItem()
             self?.player.play();
         }
