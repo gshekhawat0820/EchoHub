@@ -20,6 +20,7 @@
 		260B06452B795DA200BD06D6 /* ActionJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B06392B795DA200BD06D6 /* ActionJson.swift */; };
 		260B06462B795DA200BD06D6 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 260B063A2B795DA200BD06D6 /* Preview Content */; };
 		260B06482B795DA200BD06D6 /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B063C2B795DA200BD06D6 /* CodableBundleExtension.swift */; };
+		2614C6FE2BD430FC00AAA5DA /* FeedbackEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */; };
 		26D741272B71798200F93014 /* EchoHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741262B71798200F93014 /* EchoHubApp.swift */; };
 		26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741282B71798200F93014 /* AssistantSelectView.swift */; };
 		26D7412D2B71798400F93014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412C2B71798400F93014 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		260B06392B795DA200BD06D6 /* ActionJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionJson.swift; sourceTree = "<group>"; };
 		260B063A2B795DA200BD06D6 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		260B063C2B795DA200BD06D6 /* CodableBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
+		2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEmail.swift; sourceTree = "<group>"; };
 		26D741232B71798200F93014 /* EchoHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D741262B71798200F93014 /* EchoHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoHubApp.swift; sourceTree = "<group>"; };
 		26D741282B71798200F93014 /* AssistantSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSelectView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				260B060F2B728E0200BD06D6 /* Info.plist */,
 				26D741262B71798200F93014 /* EchoHubApp.swift */,
+				2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */,
 				26D741282B71798200F93014 /* AssistantSelectView.swift */,
 				260690712BACAD6300F71F12 /* SetPasswordView.swift */,
 				B26B8F482B744BC4000843B9 /* ActionView.swift */,
@@ -301,6 +304,7 @@
 				B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */,
 				B23404B42BB39C9F00EB9693 /* NavigationBarView.swift in Sources */,
 				260B063F2B795DA200BD06D6 /* Constant.swift in Sources */,
+				2614C6FE2BD430FC00AAA5DA /* FeedbackEmail.swift in Sources */,
 				B26B8F492B744BC4000843B9 /* ActionView.swift in Sources */,
 				2606906C2BA9D23F00F71F12 /* PasscodeView.swift in Sources */,
 				260B06482B795DA200BD06D6 /* CodableBundleExtension.swift in Sources */,

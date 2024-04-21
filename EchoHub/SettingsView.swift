@@ -9,11 +9,12 @@ import SwiftUI
 import AWSPolly
 
 struct SettingsView: View {
+    @Environment(\.openURL) var openURL
+    private var email = FeedbackEmail(toAddress: "echohubfeedback@gmail.com", subject: "Feedback Email", messageHeader: "Please leave any feedback/suggestions about EchoHub below:")
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
     @State private var showPasswordReset = false;
     @Binding var passwordExists: Bool;
-
     var body: some View {
         NavigationView {
             Form {
@@ -57,6 +58,13 @@ struct SettingsView: View {
                         Text("Reset Password")
                     })
                 }
+                HStack {
+                    Button {
+                        email.send(openURL: openURL)
+                    } label: {
+                        Text("Send Feedback!")
+                    }
+                }
             }.navigationTitle("Settings")
         }
         .sheet(isPresented: $showPasswordReset) {
@@ -65,6 +73,6 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
-    SettingsView(passwordExists: .constant(false))
-}
+//#Preview {
+//    SettingsView(passwordExists: .constant(false))
+//}
