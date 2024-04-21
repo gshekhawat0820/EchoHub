@@ -17,6 +17,7 @@ struct SettingsView: View {
     @State private var showEmailReset = false;
     @Binding var passwordExists: Bool;
     @Binding var emailExists: Bool;
+    @Binding var confirm: Bool;
     var body: some View {
         NavigationView {
             Form {
@@ -53,6 +54,9 @@ struct SettingsView: View {
                     }
                     .id(selectedLanguage)
                 }
+
+                Toggle("Confirmation Popup", isOn: $confirm)
+
                 HStack {
                     Button(action: {
                         showEmailReset.toggle()
@@ -86,5 +90,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(passwordExists: .constant(false), emailExists: .constant(true))
+    SettingsView(passwordExists: .constant(false), emailExists: .constant(true), confirm: .constant(true))
 }

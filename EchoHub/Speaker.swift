@@ -16,7 +16,7 @@ class Speaker {
     
     init() {
         player.actionAtItemEnd = .pause;
-
+        
         AVSpeechSynthesisVoice.speechVoices();
         
         NotificationCenter.default.addObserver(
@@ -29,11 +29,11 @@ class Speaker {
     }
     
     func advance() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.player.advanceToNextItem()
             self?.player.play();
         }
-     }
+    }
     
     func getStringLanguageCode(voiceId: AWSPollyVoiceId) -> String {
         switch voiceId {
@@ -56,17 +56,39 @@ class Speaker {
         let utterance = AVSpeechUtterance(string: action);
         utterance.voice = AVSpeechSynthesisVoice(language: langCode);
         utterance.rate = 0.5;
-
+        
         self.synthesizer.speak(utterance);
     }
-
+    
     func speak(
         action: String,
         voice: (AWSPollyVoiceId, AWSPollyLanguageCode)? = nil
     ) {
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Error playing sound")
+        }
+        
         let input = AWSPollySynthesizeSpeechURLBuilderRequest();
-        input.text = action;
+        
+        if action.hasPrefix("Alexa,") {
+            let prefix = "Alexa,"
+            let modifiedAction = "<speak>\(prefix) <break time='2s'/>\(String(action.dropFirst(prefix.count)))</speak>"
+            input.textType = .ssml
+            input.text = modifiedAction
+        } else if action.hasPrefix("Hey Google,") {
+            let prefix = "Hey Google,"
+            let modifiedAction = "<speak>\(prefix) <break time='2s'/>\(String(action.dropFirst(prefix.count)))</speak>"
+            input.textType = .ssml
+            input.text = modifiedAction
+        } else {
+            input.text = action
+        }
+        
         input.outputFormat = AWSPollyOutputFormat.mp3;
+        
         
         if let voice = voice {
             input.voiceId = voice.0;
@@ -112,10 +134,10 @@ class Speaker {
             self.player.play();
             return;
         }
-
+        
         // TODO: if not connected to internet, fall back to https://developer.apple.com/documentation/avfaudio/avspeechsynthesisvoice
         let builder = AWSPollySynthesizeSpeechURLBuilder.default().getPreSignedURL(input);
-
+        
         // TODO: if the URL errors, then fall back to default voice...
         builder.continueOnSuccessWith { (awsTask: AWSTask<NSURL>) -> Any? in
             if let error = awsTask.error {
@@ -131,7 +153,7 @@ class Speaker {
                 self.useAppleSynthesizer(action: action, langCode: langCode);
                 return nil;
             }
-
+            
             // The result of getPresignedURL task is NSURL.
             if let url = awsTask.result {
                 // Try playing the data using the system AVAudioPlayer

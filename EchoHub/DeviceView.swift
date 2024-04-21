@@ -12,6 +12,7 @@ struct DeviceView: View {
     @State private var isAdmin = false;
     @Binding var passwordExists: Bool;
     @Binding var emailExists: Bool;
+    @Binding var confirm: Bool;
     let assistantName: String;
     let isHomeAssistant: Bool;
     var body: some View {
@@ -26,6 +27,7 @@ struct DeviceView: View {
                         FavoriteView(
                             assistantName: self.assistantName,
                             isAdmin: $isAdmin,
+                            confirm: $confirm,
                             isHomeAssistant: self.isHomeAssistant
                         )
 
@@ -35,7 +37,8 @@ struct DeviceView: View {
                                 assistantName: self.assistantName,
                                 category: "Talk",
                                 emoji: "🗣️",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                         } else  {
                           CategoryView(
@@ -43,35 +46,40 @@ struct DeviceView: View {
                                 assistantName: self.assistantName,
                                 category: "Household",
                                 emoji: "🏠",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                             CategoryView(
                                 isHomeAssistant: self.isHomeAssistant,
                                 assistantName: self.assistantName,
                                 category: "Entertainment",
                                 emoji: "🎥",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                             CategoryView(
                                 isHomeAssistant: self.isHomeAssistant,
                                 assistantName: self.assistantName,
                                 category: "Communication",
                                 emoji: "📞",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                             CategoryView(
                                 isHomeAssistant: self.isHomeAssistant,
                                 assistantName: self.assistantName,
                                 category: "Routines",
                                 emoji: "⏰",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                             CategoryView(
                                 isHomeAssistant: self.isHomeAssistant,
                                 assistantName: self.assistantName,
                                 category: "Information & Chores",
                                 emoji: "📋",
-                                isAdmin: $isAdmin
+                                isAdmin: $isAdmin,
+                                confirm: $confirm
                             )
                         }
                     })

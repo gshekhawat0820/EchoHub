@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 
 struct CategoryView: View {
     @Binding var isAdmin: Bool;
+    @Binding var confirm: Bool;
     let isHomeAssistant: Bool;
 
     let assistantName: String;
@@ -22,9 +23,10 @@ struct CategoryView: View {
     
     @State private var dragging: Action?;
 
-    init(isHomeAssistant: Bool, assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>) {
+    init(isHomeAssistant: Bool, assistantName: String, category: String, emoji: String, isAdmin: Binding<Bool>, confirm: Binding<Bool>) {
         self.isHomeAssistant = isHomeAssistant;
         self._isAdmin = isAdmin;
+        self._confirm = confirm;
         self.assistantName = assistantName;
 
         self.category = category;
@@ -52,7 +54,8 @@ struct CategoryView: View {
         LazyVGrid(columns: gridLayout, spacing: 15, content: {
             ForEach(self.actions) { action in
                 ActionIconView(
-                    isAdmin: $isAdmin, 
+                    isAdmin: $isAdmin,
+                    confirm: $confirm,
                     assistantName: self.assistantName,
                     isHomeAssistant: self.isHomeAssistant,
                     action: action

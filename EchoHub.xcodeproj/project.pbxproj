@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		120435592B7966290054CB12 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120435582B7966290054CB12 /* Speaker.swift */; };
+		1281461E2BD415F50043B036 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281461D2BD415F50043B036 /* TutorialView.swift */; };
 		21FFEA2A186111978F6020B2 /* Pods_EchoHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAE1A417DA86E3C6EC483D9 /* Pods_EchoHub.framework */; };
 		2606906C2BA9D23F00F71F12 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606906B2BA9D23F00F71F12 /* PasscodeView.swift */; };
 		2606906E2BA9D24800F71F12 /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606906D2BA9D24800F71F12 /* NumberPadView.swift */; };
@@ -23,6 +24,7 @@
 		2614C6FE2BD430FC00AAA5DA /* FeedbackEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */; };
 		26D6A5502BD554EF002B11E5 /* SetEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6A54F2BD554EF002B11E5 /* SetEmailView.swift */; };
 		26D6A5522BD55835002B11E5 /* SetEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6A5512BD55835002B11E5 /* SetEmailViewModel.swift */; };
+		26D6A5562BD5A9C8002B11E5 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 26D6A5552BD5A9C8002B11E5 /* awsconfiguration.json */; };
 		26D741272B71798200F93014 /* EchoHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741262B71798200F93014 /* EchoHubApp.swift */; };
 		26D741292B71798200F93014 /* AssistantSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D741282B71798200F93014 /* AssistantSelectView.swift */; };
 		26D7412D2B71798400F93014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D7412C2B71798400F93014 /* Assets.xcassets */; };
@@ -38,11 +40,11 @@
 		B26B8F492B744BC4000843B9 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F482B744BC4000843B9 /* ActionView.swift */; };
 		B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */; };
 		B26B8F4D2B745783000843B9 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B8F4C2B745783000843B9 /* ImagePickerView.swift */; };
-		B2C1440F2BA7962B004FFF9B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		120435582B7966290054CB12 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		1281461D2BD415F50043B036 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		177F77AC13A3E53CFAABD63A /* Pods-EchoHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchoHub.debug.xcconfig"; path = "Target Support Files/Pods-EchoHub/Pods-EchoHub.debug.xcconfig"; sourceTree = "<group>"; };
 		2606906B2BA9D23F00F71F12 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
 		2606906D2BA9D24800F71F12 /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEmail.swift; sourceTree = "<group>"; };
 		26D6A54F2BD554EF002B11E5 /* SetEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailView.swift; sourceTree = "<group>"; };
 		26D6A5512BD55835002B11E5 /* SetEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailViewModel.swift; sourceTree = "<group>"; };
+		26D6A5552BD5A9C8002B11E5 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		26D741232B71798200F93014 /* EchoHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D741262B71798200F93014 /* EchoHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoHubApp.swift; sourceTree = "<group>"; };
 		26D741282B71798200F93014 /* AssistantSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSelectView.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		B26B8F482B744BC4000843B9 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		B26B8F4A2B7453CB000843B9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B26B8F4C2B745783000843B9 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
-		B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		CE024AED63F29BA70CEB0FEE /* Pods-EchoHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchoHub.release.xcconfig"; path = "Target Support Files/Pods-EchoHub/Pods-EchoHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +97,6 @@
 		26D7411A2B71798200F93014 = {
 			isa = PBXGroup;
 			children = (
-				B2C1440E2BA7962B004FFF9B /* awsconfiguration.json */,
 				26D741252B71798200F93014 /* EchoHub */,
 				26D741242B71798200F93014 /* Products */,
 				2FDB38211E83A2D1747713CA /* Pods */,
@@ -114,6 +115,7 @@
 		26D741252B71798200F93014 /* EchoHub */ = {
 			isa = PBXGroup;
 			children = (
+				26D6A5552BD5A9C8002B11E5 /* awsconfiguration.json */,
 				260B060F2B728E0200BD06D6 /* Info.plist */,
 				26D741262B71798200F93014 /* EchoHubApp.swift */,
 				2614C6FD2BD430FC00AAA5DA /* FeedbackEmail.swift */,
@@ -145,6 +147,7 @@
 				260B063A2B795DA200BD06D6 /* Preview Content */,
 				26D7412C2B71798400F93014 /* Assets.xcassets */,
 				26D7412E2B71798400F93014 /* Preview Content */,
+				1281461D2BD415F50043B036 /* TutorialView.swift */,
 			);
 			path = EchoHub;
 			sourceTree = "<group>";
@@ -235,7 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				260B06112B728EA300BD06D6 /* LaunchScreen.storyboard in Resources */,
-				B2C1440F2BA7962B004FFF9B /* awsconfiguration.json in Resources */,
+				26D6A5562BD5A9C8002B11E5 /* awsconfiguration.json in Resources */,
 				26D741302B71798400F93014 /* Preview Assets.xcassets in Resources */,
 				260B06432B795DA200BD06D6 /* Images in Resources */,
 				260B06402B795DA200BD06D6 /* Data in Resources */,
@@ -302,6 +305,7 @@
 				120435592B7966290054CB12 /* Speaker.swift in Sources */,
 				B26B8F4B2B7453CB000843B9 /* ImagePicker.swift in Sources */,
 				26D741272B71798200F93014 /* EchoHubApp.swift in Sources */,
+				1281461E2BD415F50043B036 /* TutorialView.swift in Sources */,
 				B23404AE2BB39C6900EB9693 /* DeviceView.swift in Sources */,
 				26D6A5522BD55835002B11E5 /* SetEmailViewModel.swift in Sources */,
 				B252C69D2BD1DB55006AFEC6 /* FavoriteView.swift in Sources */,

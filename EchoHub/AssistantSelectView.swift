@@ -10,19 +10,33 @@ import SwiftData
 import PhotosUI
 
 struct AssistantSelectView: View {
-    @State private var showingSheet = false;
+    @State private var showingTutorialSheet = false;
+    @State private var showingSettingsSheet = false;
     @Binding var passwordExists: Bool;
     @Binding var emailExists: Bool;
+    @Binding var confirm: Bool;
     var body: some View {
         NavigationStack {
             ZStack {
                 primaryColor.ignoresSafeArea()
                 HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Button(
+                            action: {
+                                showingTutorialSheet.toggle();
+                            }
+                        ) {
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundStyle(.white)
+                                .padding()
+                        }
+                        Spacer()
+                    }
                     Spacer()
                     VStack(alignment: .leading) {
                         Button(
                             action: {
-                                showingSheet.toggle();
+                                showingSettingsSheet.toggle();
                             }
                         ) {
                             Image(systemName: "gearshape.fill")
@@ -47,7 +61,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Amazon Alexa", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Amazon Alexa", isHomeAssistant: true)
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -60,7 +74,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Google Home", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Google Home", isHomeAssistant: true)
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -73,7 +87,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Picture Board", isHomeAssistant: false)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm, assistantName: "Picture Board", isHomeAssistant: false)
                     }, label: {
                         Text("Picture Board")
                             .foregroundStyle(Color.white)
@@ -86,8 +100,10 @@ struct AssistantSelectView: View {
                             )
                     });
                 }
-            }.sheet(isPresented: $showingSheet) {
-                SettingsView(passwordExists: $passwordExists, emailExists: $emailExists)
+            }.sheet(isPresented: $showingSettingsSheet) {
+                SettingsView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm)
+            }.sheet(isPresented: $showingTutorialSheet) {
+                TutorialView()
             }
         }
     }
@@ -99,5 +115,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView(passwordExists: .constant(true), emailExists: .constant((true)));
+    AssistantSelectView(passwordExists: .constant(true), emailExists: .constant((true)), confirm: .constant(true));
 }

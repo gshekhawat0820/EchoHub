@@ -14,20 +14,21 @@ struct EchoHubApp: App {
     init() {
         UserDefaults.standard.register(defaults: [
             "language": "English",
-            "voice": "Salli"
+            "voice": "Salli",
         ])
     }
 
     @State private var passwordExists = KeychainManager.getPassword() != nil;
     @State private var emailExists = KeychainManager.getEmail() != nil;
-    
+    @State private var confirm = false;
+                
     var body: some Scene {
         WindowGroup {
             if emailExists {
                 if !passwordExists {
                     SetPasswordView(passwordExists: $passwordExists)
                 } else {
-                    AssistantSelectView(passwordExists: $passwordExists, emailExists: $emailExists)
+                    AssistantSelectView(passwordExists: $passwordExists, emailExists: $emailExists, confirm: $confirm)
                 }
             }
             else {
