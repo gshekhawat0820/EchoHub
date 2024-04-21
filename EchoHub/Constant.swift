@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import AWSPolly
+import SendGrid
 
 let speaker: Speaker = Speaker()
 
@@ -61,3 +62,6 @@ let polly = [
         "Zhiyu": Voice(id: .zhiyu, languageCode: .cmnCN, prompt: "你好! 我叫智宇.")
     ],
 ];
+
+let sendGridAPIKey = Bundle.main.infoDictionary?["SENDGRID_API_KEY"] as? String
+let sendGridEmail: Address = "echohubfeedback@gmail.com"

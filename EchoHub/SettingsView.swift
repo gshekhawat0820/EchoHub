@@ -10,9 +10,13 @@ import AWSPolly
 
 struct SettingsView: View {
     @Environment(\.openURL) var openURL
-    private var email = FeedbackEmail(toAddress: "echohubfeedback@gmail.com", subject: "Feedback Email", messageHeader: "Please leave any feedback/suggestions about EchoHub below:")
+    var email = FeedbackEmail(toAddress: "echohubfeedback@gmail.com", subject: "Feedback Email", messageHeader: "Please leave any feedback/suggestions about EchoHub below:")
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
+    @State private var showPasswordReset = false;
+    @State private var showEmailReset = false;
+    @Binding var passwordExists: Bool;
+    @Binding var emailExists: Bool;
     var body: some View {
         NavigationView {
             Form {
@@ -50,6 +54,20 @@ struct SettingsView: View {
                     .id(selectedLanguage)
                 }
                 HStack {
+                    Button(action: {
+                        showEmailReset.toggle()
+                    }, label: {
+                        Text("Reset Email")
+                    })
+                }
+                HStack {
+                    Button(action: {
+                        showPasswordReset.toggle()
+                    }, label: {
+                        Text("Reset Password")
+                    })
+                }
+                HStack {
                     Button {
                         email.send(openURL: openURL)
                     } label: {
@@ -58,9 +76,15 @@ struct SettingsView: View {
                 }
             }.navigationTitle("Settings")
         }
+        .sheet(isPresented: $showPasswordReset) {
+            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, emailExists: $emailExists, resetEmail: false, resetPassword: true)
+        }
+        .sheet(isPresented: $showEmailReset) {
+            PasscodeView(isAdmin: .constant(false), passwordExists: $passwordExists, emailExists: $emailExists, resetEmail: true, resetPassword: false)
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(passwordExists: .constant(false), emailExists: .constant(true))
 }

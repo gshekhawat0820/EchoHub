@@ -12,7 +12,7 @@ import PhotosUI
 struct AssistantSelectView: View {
     @State private var showingSheet = false;
     @Binding var passwordExists: Bool;
-  
+    @Binding var emailExists: Bool;
     var body: some View {
         NavigationStack {
             ZStack {
@@ -47,7 +47,7 @@ struct AssistantSelectView: View {
                         .font(.system(size: 25))
                         .fontWeight(.light)
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Amazon Alexa", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Amazon Alexa", isHomeAssistant: true)
                     }, label: {
                         Text("Amazon Alexa")
                             .foregroundStyle(Color.white)
@@ -60,7 +60,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Google Home", isHomeAssistant: true)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Google Home", isHomeAssistant: true)
                     }, label: {
                         Text("Google Home")
                             .foregroundStyle(Color.white)
@@ -73,7 +73,7 @@ struct AssistantSelectView: View {
                             )
                     });
                     NavigationLink(destination: {
-                        DeviceView(assistantName: "Picture Board", isHomeAssistant: false)
+                        DeviceView(passwordExists: $passwordExists, emailExists: $emailExists, assistantName: "Picture Board", isHomeAssistant: false)
                     }, label: {
                         Text("Picture Board")
                             .foregroundStyle(Color.white)
@@ -85,16 +85,9 @@ struct AssistantSelectView: View {
                                     .stroke(.white, lineWidth: 2)
                             )
                     });
-                    
-                    Button(action: {
-                        KeychainManager.deletePassword()
-                        passwordExists = false
-                    }, label: {
-                        Text("Reset Password").foregroundStyle(.white)
-                    })
                 }
             }.sheet(isPresented: $showingSheet) {
-                SettingsView()
+                SettingsView(passwordExists: $passwordExists, emailExists: $emailExists)
             }
         }
     }
@@ -106,5 +99,5 @@ struct AssistantSelectView: View {
 // Information & Chores: Set alarm/reminders, Check weather, Check calendar, Grocery list, Reorder purchased items
 
 #Preview {
-    AssistantSelectView(passwordExists: .constant(true));
+    AssistantSelectView(passwordExists: .constant(true), emailExists: .constant((true)));
 }
