@@ -197,7 +197,7 @@ struct ActionView: View {
                 }
                 
                 Toggle(isOn: self.$favorite) {
-                    Text("Favorite")
+                    Text("Favorite ⭐️")
                 }
                 
                 Section {
