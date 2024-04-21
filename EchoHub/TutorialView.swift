@@ -95,18 +95,18 @@ struct TutorialView: View {
                     .cornerRadius(10)
                     .font(.system(size: 12)) .fontWeight(.heavy)
                     
-                    DisclosureGroup("How to Reset Password", content: {
+                    DisclosureGroup("How to Reset Password/Email", content: {
                         VStack(alignment: .leading, spacing: 5) {Text("Step 1: Navigate to the home screen")
                                 .font(.system(size: 16)) .fontWeight(.medium)
                                 .foregroundColor(.white)
                                 .padding(.top, 10)
                             
-                            Text("Step 2: Click Reset Password at the bottom of the screen")
+                            Text("Step 2: Click the Settings icon at the top right of the screen")
                                 .font(.system(size: 16)) .fontWeight(.medium)
                                 .foregroundColor(.white)
                                 .padding(.top, 5)
                             
-                            Text("Step 3: Enter new password")
+                            Text("Step 3: Click your desired choice and follow the provided steps")
                                 .font(.system(size: 16)) .fontWeight(.medium)
                                 .foregroundColor(.white)
                                 .padding(.top, 5)
