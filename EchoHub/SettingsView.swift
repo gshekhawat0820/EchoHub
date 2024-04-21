@@ -10,7 +10,7 @@ import AWSPolly
 
 struct SettingsView: View {
     @Environment(\.openURL) var openURL
-    private var email = FeedbackEmail(toAddress: "echohubfeedback@gmail.com", subject: "Feedback Email", messageHeader: "Please leave any feedback/suggestions about EchoHub below:")
+    var email = FeedbackEmail(toAddress: "echohubfeedback@gmail.com", subject: "Feedback Email", messageHeader: "Please leave any feedback/suggestions about EchoHub below:")
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "language")!;
     @State private var selectedVoice: String = UserDefaults.standard.string(forKey: "voice")!;
     @State private var showPasswordReset = false;
@@ -73,6 +73,6 @@ struct SettingsView: View {
     }
 }
 
-//#Preview {
-//    SettingsView(passwordExists: .constant(false))
-//}
+#Preview {
+    SettingsView(passwordExists: .constant(false))
+}

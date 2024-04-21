@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SendGrid
 
 struct PasscodeView: View {
     @State private var passcode = ""
@@ -13,6 +14,8 @@ struct PasscodeView: View {
     @Binding var passwordExists: Bool
     @State private var showPassCodeError = false;
     @State private var shake = false;
+    @State private var forgotPressed = false;
+    @State private var number = "0000"
     @Environment(\.dismiss) private var dismiss;
     var reset: Bool
     
@@ -30,10 +33,18 @@ struct PasscodeView: View {
                         .foregroundStyle(.white)
                 }
                 else {
-                    Text("Please enter your current 4-digit pin to reset your password.")
-                        .font(.subheadline)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.white)
+                    if !forgotPressed {
+                        Text("Please enter your current 4-digit pin to reset your password.")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+                    }
+                    else {
+                        Text("Please enter the random 4-digit pin we just sent to your email.")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+                    }
                 }
             }
             .padding(.top, 90)
@@ -48,6 +59,33 @@ struct PasscodeView: View {
                     .foregroundStyle(.red)
                     .modifier(ShakeEffect(animatableData: shake ? 1 : 0))
                     .animation(.linear, value: shake)
+            }
+            
+            if reset && !forgotPressed {
+                Button {
+                    number = String(Int.random(in: 1000 ... 9999))
+                    let session = Session()
+                    session.authentication = Authentication.apiKey(sendGridAPIKey!)
+                    let personalization = Personalization(recipients: "gauravshekhawat99@gmail.com")
+                    let plainText = Content(contentType: ContentType.plainText, value: "Your random 4-digit pin required to create a new passcode is: \(number).")
+                    let email = Email(
+                        personalizations: [personalization],
+                        from: sendGridEmail,
+                        content: [plainText],
+                        subject: "Password Reset"
+                    )
+                    do {
+                        try session.send(request: email)
+                    } catch {
+                        print(error)
+                    }
+                    forgotPressed = true;
+                } label: {
+                    Text("Forgot your Password?")
+                        .font(.caption)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                }
             }
             
             Spacer()
@@ -69,13 +107,25 @@ struct PasscodeView: View {
         Task {
             try? await Task.sleep(nanoseconds: 125_000_000)
             isAdmin = passcode == KeychainManager.getPassword()
-            showPassCodeError = passcode != KeychainManager.getPassword()
-            if passcode == KeychainManager.getPassword() {
-                if reset {
-                    KeychainManager.deletePassword()
-                    passwordExists = false
+            showPassCodeError = forgotPressed ? passcode != number : passcode != KeychainManager.getPassword()
+            if reset {
+                if forgotPressed {
+                    if passcode == number {
+                        KeychainManager.deletePassword()
+                        passwordExists = false
+                    }
                 }
-                dismiss()
+                else {
+                    if passcode == KeychainManager.getPassword() {
+                        KeychainManager.deletePassword()
+                        passwordExists = false
+                    }
+                }
+            }
+            else {
+                if passcode == KeychainManager.getPassword() {
+                    dismiss()
+                }
             }
             passcode = ""
             shake.toggle()
@@ -98,5 +148,5 @@ struct ShakeEffect: GeometryEffect {
 }
 
 #Preview {
-    PasscodeView(isAdmin: .constant(false), passwordExists: .constant(false), reset: false)
+    PasscodeView(isAdmin: .constant(false), passwordExists: .constant(false), reset: true)
 }
